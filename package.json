@@ -1,0 +1,44 @@
+{
+  "name": "webapp-baseline",
+  "version": "0.0.1",
+  "description": "Baseline for creating React+Typescript web apps",
+  "main": "index.tsx",
+  "scripts": {
+    "start": "webpack-dev-server --config webpack.dev.js",
+    "build": "webpack --config webpack.prod.js -P",
+    "test": "jest src",
+    "test:watch": "jest src --watch",
+    "test:e2e": "testcafe chrome e2e/tests/**/*.test.ts",
+    "lint": "tslint -c tslint.json 'src/**/*.ts'"
+  },
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@types/jest": "23.3.9",
+    "@types/react": "16.7.3",
+    "@types/react-dom": "16.0.9",
+    "autoprefixer": "9.3.1",
+    "awesome-typescript-loader": "5.2.1",
+    "clean-webpack-plugin": "0.1.19",
+    "css-loader": "1.0.1",
+    "html-webpack-plugin": "3.2.0",
+    "jest": "23.6.0",
+    "postcss-loader": "3.0.0",
+    "prettier": "1.15.2",
+    "source-map-loader": "0.2.4",
+    "style-loader": "0.23.1",
+    "testcafe": "0.23.2",
+    "ts-jest": "23.10.4",
+    "tslint": "5.11.0",
+    "tslint-config-prettier": "1.15.0",
+    "tslint-react": "3.6.0",
+    "typescript": "3.1.6",
+    "webpack": "4.25.1",
+    "webpack-cli": "3.1.2",
+    "webpack-dev-server": "3.1.10",
+    "webpack-merge": "4.1.4"
+  },
+  "dependencies": {
+    "react": "16.6.1",
+    "react-dom": "16.6.1"
+  }
+}
