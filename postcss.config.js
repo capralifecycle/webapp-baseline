@@ -1,3 +1,3 @@
-module.epxorts = {
+module.exports = {
   plugins: [require('autoprefixer')]
 };
