@@ -31,7 +31,7 @@
     "testcafe": "0.23.3",
     "ts-jest": "23.10.5",
     "tslint": "5.12.1",
-    "tslint-config-prettier": "1.17.0",
+    "tslint-config-prettier": "1.18.0",
     "tslint-react": "3.6.0",
     "typescript": "3.3.1",
     "webpack": "4.29.0",
