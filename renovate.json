@@ -1,55 +1,10 @@
 {
   "extends": ["config:base"],
-  "packageRules": [
-    {
-      "groupName": "linting",
-      "packagePatterns": ["tslint", "prettier"],
-      "automerge": true,
-      "automergeType": "branch"
-    },
-    {
-      "groupName": "jest",
-      "packagePatterns": ["jest"],
-      "automerge": true,
-      "automergeType": "branch"
-    },
-    {
-      "groupName": "typescript",
-      "packagePatterns": ["typescript", "^@types/"],
-      "automerge": true,
-      "automergeType": "branch"
-    },
-    {
-      "groupName": "webpack",
-      "packagePatterns": ["webpack", "-loader$"],
-      "automerge": true,
-      "automergeType": "branch"
-    },
-    {
-      "groupName": "react",
-      "packagePatterns": ["^react"],
-      "automerge": true,
-      "automergeType": "branch"
-    },
-    {
-      "groupName": "autoprefixer",
-      "packagePatterns": ["^autoprefixer$"],
-      "automerge": true,
-      "automergeType": "branch"
-    },
-    {
-      "groupName": "http-server",
-      "packagePatterns": ["^http-server$"],
-      "automerge": true,
-      "automergeType": "branch"
-    },
-    {
-      "groupName": "testcafe",
-      "packagePatterns": ["^testcafe$"],
-      "automerge": true,
-      "automergeType": "branch"
-    }
-  ],
+  "automerge": true,
+  "automergeType": "branch",
+  "major": {
+    "automerge": false
+  },
   "pin": {
     "automerge": true
   }
