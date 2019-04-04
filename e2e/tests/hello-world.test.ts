@@ -17,5 +17,5 @@ const landingPage = new LandingPage();
 test('Check welcome message', async t => {
   await t
     .expect(landingPage.getHeadlineText())
-    .match(new RegExp('webapp-baseline-0.0.1'));
+    .match(new RegExp('some-app-some-version'));
 });
