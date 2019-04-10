@@ -10,9 +10,7 @@ const configQaJson = require('./config/qa.json');
 const configProdJson = require('./config/prod.json');
 
 module.exports = env => {
-  function isProd() {
-    return env && env.production;
-  }
+  const isProd = env && env.production;
 
   const release = `${
     packageJson.version
@@ -93,7 +91,7 @@ module.exports = env => {
     ]
   };
 
-  if (isProd()) {
+  if (isProd) {
     return {
       ...config,
       mode: 'production',
