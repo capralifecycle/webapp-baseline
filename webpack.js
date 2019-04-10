@@ -19,13 +19,13 @@ module.exports = env => {
   const commonConfig = {
     appName: packageJson.name,
     appVersion: release,
-    buildTime: new Date().getTime()
+    buildTime: new Date().getTime(),
   };
 
   function outputConfig(filename, config) {
     return new GenerateJsonPlugin(filename, {
       ...commonConfig,
-      ...config
+      ...config,
     });
   }
 
@@ -35,20 +35,20 @@ module.exports = env => {
       rules: [
         {
           test: /\.(ts|tsx)$/,
-          use: 'awesome-typescript-loader'
+          use: 'awesome-typescript-loader',
         },
         {
           enforce: 'pre',
           test: /\.*js$/,
-          loader: 'source-map-loader'
+          loader: 'source-map-loader',
         },
         {
           test: /\.svg$/i,
-          use: 'url-loader'
+          use: 'url-loader',
         },
         {
           test: /(?<!\.module)\.css$/,
-          use: ['style-loader', 'css-loader', 'postcss-loader']
+          use: ['style-loader', 'css-loader', 'postcss-loader'],
         },
         {
           test: /\.module\.css$/,
@@ -59,43 +59,43 @@ module.exports = env => {
               options: {
                 importLoaders: 1,
                 modules: true,
-                localIdentName: '[name]__[local]__[hash:base64:5]'
-              }
+                localIdentName: '[name]__[local]__[hash:base64:5]',
+              },
             },
-            'postcss-loader'
-          ]
-        }
-      ]
+            'postcss-loader',
+          ],
+        },
+      ],
     },
     resolve: {
-      extensions: ['.js', '.jsx', '.ts', '.tsx', '.css']
+      extensions: ['.js', '.jsx', '.ts', '.tsx', '.css'],
     },
     output: {
       filename: '[name].[contentHash].js',
-      path: path.resolve(__dirname, 'build')
+      path: path.resolve(__dirname, 'build'),
     },
     optimization: {
       splitChunks: {
         chunks: 'all',
-        automaticNameDelimiter: '-'
-      }
+        automaticNameDelimiter: '-',
+      },
     },
     plugins: [
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
-        template: './src/index.html'
+        template: './src/index.html',
       }),
       outputConfig('config.json', configLocalJson),
       outputConfig('config/qa.json', configQaJson),
-      outputConfig('config/prod.json', configProdJson)
-    ]
+      outputConfig('config/prod.json', configProdJson),
+    ],
   };
 
   if (isProd) {
     return {
       ...config,
       mode: 'production',
-      devtool: 'source-map'
+      devtool: 'source-map',
     };
   }
 
@@ -105,7 +105,7 @@ module.exports = env => {
     devtool: 'inline-source-map',
     devServer: {
       contentBase: './build',
-      port: 3000
-    }
+      port: 3000,
+    },
   };
 };
