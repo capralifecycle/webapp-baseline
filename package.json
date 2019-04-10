@@ -10,7 +10,8 @@
     "test:watch": "jest src --watch",
     "test:e2e": "testcafe chrome e2e/tests/**/*.test.ts",
     "test:e2e:jenkins": "testcafe --app './scripts/serve-dist.sh' chrome:headless e2e/tests/**/*.test.ts",
-    "lint": "eslint --ext js --ext jsx --ext ts --ext tsx src e2e"
+    "lint": "eslint --ext js --ext jsx --ext ts --ext tsx src e2e",
+    "lint:fix": "eslint --fix --ext js --ext jsx --ext ts --ext tsx src e2e"
   },
   "license": "Apache-2.0",
   "devDependencies": {
