@@ -5,7 +5,7 @@ fixture`Example app`.page('http://localhost:3000');
 class LandingPage {
   public headline: Selector;
 
-  constructor() {
+  public constructor() {
     this.headline = Selector('h1');
   }
 
