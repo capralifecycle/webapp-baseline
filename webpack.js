@@ -59,7 +59,7 @@ module.exports = env => {
               options: {
                 importLoaders: 1,
                 modules: true,
-                localIdentName: '[name]__[local]__[hash:base64:5]',
+                localsConvention: 'asIs',
               },
             },
             'postcss-loader',
