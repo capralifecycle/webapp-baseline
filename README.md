@@ -1,6 +1,6 @@
 # Baseline for creating web apps
 
-[![Build Status](https://jenkins.capra.tv/buildStatus/icon?job=webapp-baseline/master)](https://jenkins.capra.tv/job/webapp-baseline/job/master/)
+[![Build Status](https://jenkins.capra.tv/buildStatus/icon?job=cals-baselines/webapp-baseline/master)](https://jenkins.capra.tv/job/cals-baselines/job/webapp-baseline/job/master/)
 
 Technologies:
 
