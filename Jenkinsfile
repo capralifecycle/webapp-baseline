@@ -7,9 +7,7 @@ buildConfig {
   dockerNode {
     checkout scm
 
-    def img = docker.image('circleci/node:11-browsers')
-    img.pull()
-    img.inside {
+    insideToolImage('node:12-alpine') {
       stage('Install dependencies') {
         sh 'npm ci'
       }
@@ -22,10 +20,19 @@ buildConfig {
         sh 'npm test'
       }
 
+      analyzeSonarCloudForJs([
+        'sonar.organization': 'capraconsulting',
+        'sonar.projectKey': 'capraconsulting_webapp-baseline',
+      ])
+
       stage('Generate build') {
         sh 'npm run build'
       }
+    }
 
+    def img = docker.image('circleci/node:12-browsers')
+    img.pull() // Ensure latest.
+    img.inside {
       stage('Run e2e tests') {
         sh 'npm run test:e2e:jenkins'
       }
