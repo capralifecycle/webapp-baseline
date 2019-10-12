@@ -6,7 +6,7 @@
   "scripts": {
     "start": "webpack-dev-server --config webpack.js",
     "build": "webpack --env.production --config webpack.js",
-    "test": "jest src",
+    "test": "jest --coverage src",
     "test:watch": "jest src --watch",
     "test:e2e": "testcafe chrome e2e/tests/**/*.test.ts",
     "test:e2e:jenkins": "testcafe --app './scripts/serve-dist.sh' chrome:headless e2e/tests/**/*.test.ts",
@@ -33,6 +33,7 @@
     "html-webpack-plugin": "3.2.0",
     "http-server": "0.11.1",
     "jest": "24.9.0",
+    "jest-sonar-reporter": "2.0.0",
     "postcss-loader": "3.0.0",
     "prettier": "1.18.2",
     "source-map-loader": "0.2.4",
