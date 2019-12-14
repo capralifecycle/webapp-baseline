@@ -1,15 +1,5 @@
 {
-  "extends": ["config:base"],
+  "extends": ["github>capraconsulting/renovate-config:default"],
   "automerge": true,
-  "automergeType": "branch",
-  "lockFileMaintenance": {
-    "enabled": true
-  },
-  "major": {
-    "automerge": false
-  },
-  "pin": {
-    "automerge": true
-  },
-  "schedule": "every weekend"
+  "automergeType": "branch"
 }
