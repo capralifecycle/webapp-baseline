@@ -38,7 +38,7 @@
     "prettier": "1.19.1",
     "source-map-loader": "0.2.4",
     "style-loader": "1.0.1",
-    "testcafe": "1.7.0",
+    "testcafe": "1.7.1",
     "ts-jest": "24.2.0",
     "typescript": "3.7.3",
     "webpack": "4.41.4",
