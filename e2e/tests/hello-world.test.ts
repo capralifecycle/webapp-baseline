@@ -14,7 +14,7 @@ class LandingPage {
 
 const landingPage = new LandingPage();
 
-test('Check welcome message', async t => {
+test('Check welcome message', async (t) => {
   await t
     .expect(landingPage.getHeadlineText())
     .match(new RegExp('some-app-some-version'));
