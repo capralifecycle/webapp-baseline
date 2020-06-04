@@ -1,3 +1,9 @@
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
+/* eslint-disable @typescript-eslint/no-unsafe-call */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+/* eslint-disable @typescript-eslint/no-unsafe-return */
+/* eslint-disable @typescript-eslint/no-var-requires */
+/* eslint-disable @typescript-eslint/restrict-template-expressions */
 const path = require('path');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -9,7 +15,7 @@ const configLocalJson = require('./config/local.json');
 const configQaJson = require('./config/qa.json');
 const configProdJson = require('./config/prod.json');
 
-module.exports = env => {
+module.exports = (env) => {
   const isProd = env && env.production;
 
   const release = `${
