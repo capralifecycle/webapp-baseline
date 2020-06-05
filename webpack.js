@@ -35,7 +35,7 @@ module.exports = env => {
       rules: [
         {
           test: /\.(ts|tsx)$/,
-          use: 'awesome-typescript-loader',
+          use: 'ts-loader',
         },
         {
           enforce: 'pre',
