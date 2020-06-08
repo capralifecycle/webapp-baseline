@@ -48,8 +48,9 @@ module.exports = (env) => {
               loader: 'css-loader',
               options: {
                 importLoaders: 1,
-                modules: true,
-                localsConvention: 'asIs',
+                modules: {
+                  localIdentName: '[name]__[local]__[hash:base64:5]',
+                },
               },
             },
             'postcss-loader',

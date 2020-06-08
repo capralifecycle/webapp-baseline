@@ -1,0 +1,12 @@
+.container {
+  display: flex;
+  flex-flow: column;
+}
+
+.container > div {
+  margin-bottom: var(--spacing-normal);
+}
+
+.highlight {
+  color: var(--color-primary);
+}
