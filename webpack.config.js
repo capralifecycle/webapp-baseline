@@ -72,6 +72,9 @@ module.exports = (env) => {
         chunks: 'all',
         automaticNameDelimiter: '-',
       },
+      runtimeChunk: {
+        name: 'manifest',
+      },
     },
     plugins: [
       new CleanWebpackPlugin(),
