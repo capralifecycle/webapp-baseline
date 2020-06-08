@@ -9,11 +9,16 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const GitRevisionPlugin = require('git-revision-webpack-plugin');
 const GenerateJsonPlugin = require('generate-json-webpack-plugin');
+const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
 
 const packageJson = require('./package.json');
 const configLocalJson = require('./config/local.json');
 const configQaJson = require('./config/qa.json');
 const configProdJson = require('./config/prod.json');
+
+const smp = new SpeedMeasurePlugin({
+  disable: !process.env.MEASURE,
+});
 
 module.exports = (env) => {
   const isProd = env && env.production;
@@ -98,14 +103,15 @@ module.exports = (env) => {
   };
 
   if (isProd) {
-    return {
+    return smp.wrap({
       ...config,
       mode: 'production',
       devtool: 'source-map',
-    };
+    });
   }
 
-  return {
+  // Configuration specific to developing locally
+  return smp.wrap({
     ...config,
     mode: 'development',
     devtool: 'inline-source-map',
@@ -113,5 +119,5 @@ module.exports = (env) => {
       contentBase: './build',
       port: 3000,
     },
-  };
+  });
 };
