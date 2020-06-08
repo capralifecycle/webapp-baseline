@@ -10,6 +10,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const GitRevisionPlugin = require('git-revision-webpack-plugin');
 const GenerateJsonPlugin = require('generate-json-webpack-plugin');
 const SpeedMeasurePlugin = require('speed-measure-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin;
 
 const packageJson = require('./package.json');
 const configLocalJson = require('./config/local.json');
@@ -85,6 +87,12 @@ module.exports = (env) => {
       filename: '[name].[contentHash].js',
       path: path.resolve(__dirname, 'build'),
     },
+    performance: {
+      // https://web.dev/your-first-performance-budget/#budget-for-quantity-based-metrics
+      hints: 'warning',
+      maxEntrypointSize: 170 * 1024,
+      maxAssetSize: 450 * 1024,
+    },
     optimization: {
       splitChunks: {
         chunks: 'all',
@@ -107,6 +115,14 @@ module.exports = (env) => {
       ...config,
       mode: 'production',
       devtool: 'source-map',
+      plugins: [
+        ...config.plugins,
+        process.env.ANALYZE &&
+          new BundleAnalyzerPlugin({
+            generateStatsFile: true,
+            analyzerMode: 'disabled',
+          }),
+      ].filter(Boolean),
     });
   }
 
