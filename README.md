@@ -2,24 +2,33 @@
 
 [![Build Status](https://jenkins.capra.tv/buildStatus/icon?job=cals-baselines/webapp-baseline/master)](https://jenkins.capra.tv/job/cals-baselines/job/webapp-baseline/job/master/)
 
-Technologies:
+# Developing
 
-- React
-- TypeScript
-- Webpack
-- Jest
-- TestCafe
-- TSLint
-- Prettier
-- Autoprefixer
+Developing locally is done with `webpack-dev-server` and is run on port 3000
+Hot reload and history API fallback are enabled by default
 
-## Using config-files for environment-specific configuration
+```
+$ npm start
+```
 
-The directory `/config` contains some JSON-files in which you can store configuration for you application. Webpack will copy the files from this folder to `/build/config` when you build your application. When deploying the application, please ensure that you include the configuration file for the environment you are deplying to.
+# Building
 
-**Example**
+```
+$ npm run build
+```
 
-1. Your `/config/qa.json` file contains configurations for you application when running in the QA-environment
-2. When deploying to QA. Also deploy `/build/qa.json` to the QA-environment (i.e. the same S3 bucket)
+## Measure build performance
 
-To access the configuration runtime you simply have to fetch the config using fetch, axios or similar (`GET /config.json`)
+If the build process seems to be slower than it should you can run the following command to analyze where bottlenecks might occur.
+
+```
+$ npm run build:measure
+```
+
+## Analyzing bundle size
+
+Performance budget has been enabled for the application. If you get warnings about bundle size when building you have exceeded the build size set by the budget. Consider use of code splitting or analyze your bundle with the following command
+
+```
+$ make analyze
+```
