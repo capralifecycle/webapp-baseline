@@ -116,10 +116,11 @@ module.exports = (env) => {
   return smp.wrap({
     ...config,
     mode: 'development',
-    devtool: 'inline-source-map',
+    devtool: 'eval-source-map',
     devServer: {
       contentBase: './build',
       port: 3000,
+      historyApiFallback: true,
     },
   });
 };
