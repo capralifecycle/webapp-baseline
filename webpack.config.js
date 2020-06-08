@@ -29,18 +29,15 @@ module.exports = (env) => {
         {
           test: /\.(ts|tsx)$/,
           use: 'ts-loader',
+          include: path.resolve(__dirname, 'src'),
         },
         {
-          enforce: 'pre',
-          test: /\.*js$/,
-          loader: 'source-map-loader',
-        },
-        {
-          test: /\.svg$/i,
+          test: /\.(svg|png)$/i,
           use: 'url-loader',
         },
         {
           test: /(?<!\.module)\.css$/,
+          include: path.resolve(__dirname, 'src'),
           use: ['style-loader', 'css-loader', 'postcss-loader'],
         },
         {
@@ -124,6 +121,16 @@ module.exports = (env) => {
       contentBase: './build',
       port: 3000,
       historyApiFallback: true,
+    },
+    module: {
+      rules: [
+        ...config.module.rules,
+        {
+          enforce: 'pre',
+          test: /\.*js$/,
+          loader: 'source-map-loader',
+        },
+      ],
     },
   });
 };
