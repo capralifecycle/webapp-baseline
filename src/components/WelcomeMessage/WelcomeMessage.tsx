@@ -1,6 +1,6 @@
-import * as React from 'react';
-import { getConfig } from '../../utils/config-utils';
-import styles from './WelcomeMessage.module.css';
+import * as React from "react";
+import { getConfig } from "../../utils/config-utils";
+import styles from "./WelcomeMessage.module.css";
 
 interface Props {
   appName?: string;

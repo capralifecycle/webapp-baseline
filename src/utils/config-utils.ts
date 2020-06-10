@@ -1,8 +1,8 @@
 export enum Environment {
-  LOCAL = 'LOCAL',
-  DEV = 'DEV',
-  STAGING = 'STAGING',
-  PROD = 'PROD',
+  LOCAL = "LOCAL",
+  DEV = "DEV",
+  STAGING = "STAGING",
+  PROD = "PROD",
 }
 
 interface IAppConfiguration {
@@ -16,19 +16,19 @@ type IEnvToConfigMap = {
 
 const envToConfigMap: IEnvToConfigMap = {
   [Environment.LOCAL]: {
-    apiUrl: 'http://localhost:8080',
+    apiUrl: "http://localhost:8080",
     environment: Environment.LOCAL,
   },
   [Environment.DEV]: {
-    apiUrl: '',
+    apiUrl: "",
     environment: Environment.DEV,
   },
   [Environment.STAGING]: {
-    apiUrl: '',
+    apiUrl: "",
     environment: Environment.STAGING,
   },
   [Environment.PROD]: {
-    apiUrl: '',
+    apiUrl: "",
     environment: Environment.PROD,
   },
 };
