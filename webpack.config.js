@@ -20,7 +20,7 @@ const smp = new SpeedMeasurePlugin({
 });
 
 module.exports = (env) => {
-  const isProd = env && env.production;
+  const isProd = env.production;
 
   const config = {
     entry: "./src/index.tsx",
@@ -49,7 +49,7 @@ module.exports = (env) => {
               options: {
                 importLoaders: 1,
                 modules: {
-                  localIdentName: "[name]__[local]__[hash:base64:5]",
+                  localIdentName: "[name]__[local]__[contentHash:base64:5]",
                 },
               },
             },
