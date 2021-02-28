@@ -49,7 +49,7 @@ module.exports = (env) => {
               options: {
                 importLoaders: 1,
                 modules: {
-                  localIdentName: "[name]__[local]__[contentHash:base64:5]",
+                  localIdentName: "[name]__[local]__[contenthash:base64:5]",
                 },
               },
             },
@@ -62,7 +62,7 @@ module.exports = (env) => {
       extensions: [".js", ".jsx", ".ts", ".tsx", ".css"],
     },
     output: {
-      filename: "[name].[contentHash].js",
+      filename: "[name].[contenthash].js",
       path: path.resolve(__dirname, "build"),
     },
     optimization: {
