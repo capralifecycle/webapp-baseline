@@ -1,34 +1,47 @@
-# Baseline for creating web apps
+# Liflig baseline for web apps
 
-[![Build Status](https://jenkins.capra.tv/buildStatus/icon?job=cals-baselines/webapp-baseline/master)](https://jenkins.capra.tv/job/cals-baselines/job/webapp-baseline/job/master/)
+## Development
 
-# Developing
-
-Developing locally is done with `webpack-dev-server` and is run on port 3000
-Hot reload and history API fallback are enabled by default
-
-```
-$ npm start
+```bash
+npm start
 ```
 
-# Building
+## Building
 
-```
-$ npm run build
-```
-
-## Measure build performance
-
-If the build process seems to be slower than it should you can run the following command to analyze where bottlenecks might occur.
-
-```
-$ npm run build:measure
+```bash
+npm run build
 ```
 
-## Analyzing bundle size
+### Measure build performance
 
-Performance budget has been enabled for the application. If you get warnings about bundle size when building you have exceeded the build size set by the budget. Consider use of code splitting or analyze your bundle with the following command
+If the build process seems to be slower than it should you can run the
+following command to analyze where bottlenecks might occur.
 
+```bash
+npm run build:measure
 ```
-$ make analyze
+
+### Analyzing bundle size
+
+Performance budget has been enabled for the application. If you get
+warnings about bundle size when building you have exceeded the build
+size set by the budget. Consider use of code splitting or analyze
+your bundle with the following command
+
+```bash
+make analyze
 ```
+
+## Deployment
+
+The webapp in this repo is deployed with
+https://github.com/capralifecycle/liflig-cdk-app-reference
+to:
+
+* https://d3olrvscdmdlu9.cloudfront.net (dev)
+* https://d1wp8sqdbvpcjy.cloudfront.net (staging)
+* https://dbi86dloe46pn.cloudfront.net (prod)
+
+It is used as an example for pipeline. Note that the environment
+detection relies on specific URLs and hence is not currently
+working properly for these URLs.
