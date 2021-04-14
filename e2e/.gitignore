@@ -1,0 +1,4 @@
+/cypress/videos
+/cypress/screenshots
+/cypress/**/*.actual.png
+/cypress/**/*.diff.png

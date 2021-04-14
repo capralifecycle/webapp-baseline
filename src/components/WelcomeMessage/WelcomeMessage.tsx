@@ -16,12 +16,13 @@ const WelcomeMessage: React.FC<Props> = ({
 
   return (
     <div className={styles.container}>
-      <div>
-        Welcome to <span className={styles.highlight}>{appName}</span>
+      <h1 id="welcome-message">
+        Welcome to <span className={styles.highlight}>{appName}</span>.
+      </h1>
+      <div id="version-info">
+        Built {appBuildTime} from commit {commitHash} and is running in{" "}
+        {config.environment}
       </div>
-      <div>Built {appBuildTime}</div>
-      <div>Commit hash: {commitHash}</div>
-      <div>Current environment {config.environment}</div>
     </div>
   );
 };

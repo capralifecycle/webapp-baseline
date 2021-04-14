@@ -5,6 +5,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 const path = require("path");
+const fs = require("fs");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const GitRevisionPlugin = require("git-revision-webpack-plugin");
@@ -15,12 +16,15 @@ const webpack = require("webpack");
 
 const packageJson = require("./package.json");
 
+const inDocker = fs.existsSync("/.dockerenv");
+
 const smp = new SpeedMeasurePlugin({
   disable: !process.env.MEASURE,
 });
 
 module.exports = (env) => {
   const isProd = env.production;
+  const dangerouslyDisableHostCheck = env.dangerouslyDisableHostCheck;
 
   const config = {
     entry: "./src/index.tsx",
@@ -119,6 +123,9 @@ module.exports = (env) => {
     mode: "development",
     devtool: "eval-source-map",
     devServer: {
+      host: inDocker ? "0.0.0.0" : "127.0.0.1",
+      disableHostCheck:
+        process.env.DANGEROUSLY_DISABLE_HOST_CHECK === "true" ? true : false,
       contentBase: "./build",
       port: 3000,
       historyApiFallback: true,

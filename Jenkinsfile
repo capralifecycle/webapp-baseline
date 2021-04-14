@@ -1,10 +1,11 @@
 #!/usr/bin/env groovy
 
 // See https://github.com/capralifecycle/jenkins-pipeline-library
-@Library('cals') _
+@Library("cals") _
 
 def pipelines = new no.capraconsulting.buildtools.lifligcdkpipelines.LifligCdkPipelines()
 def webapp = new no.capraconsulting.buildtools.cdk.Webapp()
+def utils = new no.capraconsulting.buildtools.Utils()
 
 def artifactsBucketName = "incub-common-build-artifacts-001112238813-eu-west-1"
 def artifactsRoleArn = "arn:aws:iam::001112238813:role/incub-common-build-artifacts-liflig-jenkins"
@@ -24,32 +25,42 @@ buildConfig(
   dockerNode {
     checkout scm
 
-    insideToolImage('node:14-browsers') {
-      stage('Install dependencies') {
-        sh 'npm ci'
+    // Pass HOME to persist $HOME/.cache on executor for Cypress install.
+    insideToolImage("node:14-browsers", [insideArgs: "-e HOME"]) {
+      releaseVersion = utils.generateLongTag(new Date())
+
+      stage("Install dependencies") {
+        sh "npm ci"
       }
 
-      stage('Lint') {
-        sh 'npm run lint'
+      stage("Lint") {
+        sh "npm run lint"
       }
 
-      stage('Run normal tests') {
-        sh 'npm test'
+      stage("Test:UNIT") {
+        sh "npm test"
       }
 
       /* temporary disabled since it does not work with 14-browsers
       analyzeSonarCloudForJs([
-        'sonar.organization': 'capraconsulting',
-        'sonar.projectKey': 'capraconsulting_webapp-baseline',
+        "sonar.organization": "capraconsulting",
+        "sonar.projectKey": "capraconsulting_webapp-baseline",
       ])
       */
 
-      stage('Generate build') {
-        sh 'npm run build'
+      stage("Generate build") {
+        sh "npm run build"
       }
 
-      stage('Run e2e tests') {
-        sh 'npm run test:e2e:jenkins'
+      stage("Test:E2E") {
+        try {
+          sh "./scripts/serve-dist.sh &"
+          sh "./node_modules/.bin/wait-on http-get://localhost:3000"
+          sh "npm run test:e2e"
+        } finally {
+          sh "pkill -f http-server"
+          archiveArtifacts artifacts: "e2e/cypress/screenshots/**,e2e/cypress/videos/**,e2e/cypress/integration/__image_snapshots__/**", fingerprint: true
+        }
       }
 
       def s3Key
