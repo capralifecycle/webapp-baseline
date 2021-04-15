@@ -5,16 +5,16 @@ export enum Environment {
   PROD = "PROD",
 }
 
-interface IAppConfiguration {
+interface AppConfiguration {
   apiUrl: string;
   environment: Environment;
 }
 
-type IEnvToConfigMap = {
-  [key in Environment]: IAppConfiguration;
+type EnvToConfigMap = {
+  [key in Environment]: AppConfiguration;
 };
 
-const envToConfigMap: IEnvToConfigMap = {
+const envToConfigMap: EnvToConfigMap = {
   [Environment.LOCAL]: {
     apiUrl: "http://localhost:8080",
     environment: Environment.LOCAL,
@@ -45,9 +45,7 @@ export const getEnvironment = (origin: string): Environment => {
   return Environment.LOCAL;
 };
 
-export const getConfig = (
-  origin: string = window.origin,
-): IAppConfiguration => {
+export const getConfig = (origin: string = window.origin): AppConfiguration => {
   const environment = getEnvironment(origin);
 
   return envToConfigMap[environment];
