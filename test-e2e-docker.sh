@@ -24,7 +24,8 @@ else
   base_url=http://host.docker.internal:3000
 fi
 
-docker build -t webapp-baseline-cypress .
+docker_image_name="$(cat package.json | jq .name -r)-cypress"
+docker build -t "$docker_image_name" .
 
 if [ $update -eq 1 ]; then
   # Before running tests, remove any actual files, so that the files
@@ -45,12 +46,12 @@ docker run \
   -e HOME \
   -e "CYPRESS_BASE_URL=$base_url" \
   -e CYPRESS_CACHE_FOLDER=/cypress \
-  -v webapp-baseline-cypress-cache:/cypress \
+  -v "$docker_image_name-cache":/cypress \
   -v "$HOME:$HOME" \
   -u "$(id -u):$(id -g)" \
   -w /data \
   --network host \
-  webapp-baseline-cypress \
+  $docker_image_name \
   $cmd \
   || code=$?
 
