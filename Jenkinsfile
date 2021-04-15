@@ -7,6 +7,7 @@ def pipelines = new no.capraconsulting.buildtools.lifligcdkpipelines.LifligCdkPi
 def webapp = new no.capraconsulting.buildtools.cdk.Webapp()
 def utils = new no.capraconsulting.buildtools.Utils()
 
+// TODO: Replace with bucket name and role arn for your project
 def artifactsBucketName = "incub-common-build-artifacts-001112238813-eu-west-1"
 def artifactsRoleArn = "arn:aws:iam::001112238813:role/incub-common-build-artifacts-liflig-jenkins"
 
@@ -20,6 +21,7 @@ buildConfig(
       ),
     ])
   ],
+  // TODO: Replace with Slack-channel for your project
   slack: [channel: "#cals-dev-info"],
 ) {
   dockerNode {

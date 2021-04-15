@@ -64,3 +64,10 @@ to:
 It is used as an example for pipeline. Note that the environment
 detection relies on specific URLs and hence is not currently
 working properly for these URLs.
+
+## Adjustments needed when starting a new application from this template
+
+[] Replace references to baseline in `README.md` and update with relevant project information
+[] Consider removing license from `package.json` and the file `LICENSE`
+[] Replace name and description in `package.json`
+[] Search code for `TODO` and replace as needed
