@@ -49,7 +49,9 @@ buildConfig(
       */
 
       stage("Generate build") {
-        sh "npm run build"
+        sh "npm run build:ci"
+        sh 'gzip -9v stats.json'
+        stash name: 'build', includes: 'build/**'
       }
 
       stage("Archive artifacts and stats") {
