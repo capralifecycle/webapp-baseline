@@ -7,6 +7,7 @@
 const path = require("path");
 const fs = require("fs");
 const { CleanWebpackPlugin } = require("clean-webpack-plugin");
+const ReactRefreshPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const GitRevisionPlugin = require("git-revision-webpack-plugin");
 const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
@@ -23,8 +24,11 @@ const smp = new SpeedMeasurePlugin({
 });
 
 module.exports = (env) => {
-  const isProd = env.production;
-  const dangerouslyDisableHostCheck = env.dangerouslyDisableHostCheck;
+  const isProd = env && env.production;
+
+  const commitHash = new GitRevisionPlugin({
+    commithashCommand: "rev-parse --short HEAD",
+  }).commithash();
 
   const config = {
     entry: "./src/index.tsx",
@@ -32,6 +36,17 @@ module.exports = (env) => {
       rules: [
         {
           test: /\.(ts|tsx)$/,
+          use: [
+            !isProd && {
+              loader: "babel-loader",
+              options: {
+                plugins: ["react-refresh/babel"],
+              },
+            },
+            {
+              loader: "ts-loader",
+            },
+          ].filter(Boolean),
           use: "ts-loader",
           include: path.resolve(__dirname, "src"),
         },
@@ -63,7 +78,7 @@ module.exports = (env) => {
       ],
     },
     resolve: {
-      extensions: [".js", ".jsx", ".ts", ".tsx", ".css"],
+      extensions: [".js", ".ts", ".tsx"],
     },
     output: {
       filename: "[name].[contenthash].js",
@@ -87,9 +102,11 @@ module.exports = (env) => {
         __BUILD_INFO__: JSON.stringify({
           appName: packageJson.name,
           appBuildTime: new Date().toISOString(),
-          commitHash: new GitRevisionPlugin({
-            commithashCommand: "rev-parse --short HEAD",
-          }).commithash(),
+          appVersion: `${new Date()
+            .toISOString()
+            .split("T")[0]
+            .replace(/-/g, "")}-${commitHash}`,
+          commitHash,
         }),
       }),
     ],
@@ -99,7 +116,7 @@ module.exports = (env) => {
     return smp.wrap({
       ...config,
       mode: "production",
-      devtool: "source-map",
+      devtool: "hidden-source-map",
       performance: {
         // https://web.dev/your-first-performance-budget/#budget-for-quantity-based-metrics
         hints: "warning",
@@ -121,6 +138,9 @@ module.exports = (env) => {
   return smp.wrap({
     ...config,
     mode: "development",
+    // https://github.com/pmmmwh/react-refresh-webpack-plugin/blob/e6774d935d11410a7928cb499b384fb7b592a162/docs/TROUBLESHOOTING.md#webpack-5-compatibility-issues-with-webpack-dev-server3
+    target: "web",
+    cache: true,
     devtool: "eval-source-map",
     devServer: {
       host: inDocker ? "0.0.0.0" : "127.0.0.1",
@@ -129,6 +149,7 @@ module.exports = (env) => {
       contentBase: "./build",
       port: 3000,
       historyApiFallback: true,
+      hot: true,
     },
     module: {
       rules: [
@@ -140,5 +161,11 @@ module.exports = (env) => {
         },
       ],
     },
+    plugins: [...config.plugins, new ReactRefreshPlugin()],
+    ignoreWarnings: [
+      {
+        message: /Failed to parse source map/,
+      },
+    ],
   });
 };
