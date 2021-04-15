@@ -9,6 +9,7 @@
     "build": "webpack --env production",
     "build:measure": "MEASURE=true webpack --env production",
     "build:analyze": "ANALYZE=true webpack --env production",
+    "build:ci": "npm run build:analyze",
     "test": "jest --coverage src",
     "test:watch": "jest src --watch",
     "test:update-snapshots": "jest -u",

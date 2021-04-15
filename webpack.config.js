@@ -96,7 +96,7 @@ module.exports = (env) => {
     plugins: [
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
-        template: "./src/index.html",
+        template: "./public/index.html",
       }),
       new webpack.DefinePlugin({
         __BUILD_INFO__: JSON.stringify({
@@ -127,8 +127,13 @@ module.exports = (env) => {
         ...config.plugins,
         process.env.ANALYZE &&
           new BundleAnalyzerPlugin({
+            defaultSizes: "gzip",
             generateStatsFile: true,
-            analyzerMode: "disabled",
+            analyzerMode: "static",
+            openAnalyzer: false,
+            // Paths are relative to output directory
+            reportFilename: "../bundle-analyze-report.html",
+            statsFilename: "../stats.json",
           }),
       ].filter(Boolean),
     });

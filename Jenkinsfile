@@ -52,6 +52,11 @@ buildConfig(
         sh "npm run build"
       }
 
+      stage("Archive artifacts and stats") {
+        sh "./scripts/generate-size-reports.sh"
+        archiveWebpackStatsAndReports()
+      }
+
       stage("Test:E2E") {
         try {
           sh "./scripts/serve-dist.sh &"
@@ -105,4 +110,31 @@ buildConfig(
       }
     }
   }
+}
+
+// TODO: Consider moving this to pipeline lib.
+def archiveWebpackStatsAndReports() {
+  archiveArtifacts artifacts: 'stats.json.gz,size-report*,bundle-analyze-report.html', fingerprint: true
+
+  plot([
+    csvFileName: 'plot-size-report-bytes.csv',
+    csvSeries: [[
+      file: 'size-report-bytes.csv',
+    ]],
+    group: 'build-size-report',
+    keepRecords: true,
+    title: 'Size by file extension in dist',
+    yaxis: 'bytes',
+  ])
+
+  plot([
+    csvFileName: 'plot-size-report-filecount.csv',
+    csvSeries: [[
+      file: 'size-report-filecount.csv',
+    ]],
+    group: 'build-size-report',
+    keepRecords: true,
+    title: 'Number of files by file extension in dist',
+    yaxis: '#',
+  ])
 }
