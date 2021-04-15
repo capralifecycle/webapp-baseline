@@ -43,13 +43,6 @@ buildConfig(
         sh "npm test"
       }
 
-      /* temporary disabled since it does not work with 14-browsers
-      analyzeSonarCloudForJs([
-        "sonar.organization": "capraconsulting",
-        "sonar.projectKey": "capraconsulting_webapp-baseline",
-      ])
-      */
-
       stage("Generate build") {
         sh "npm run build:ci"
         sh 'gzip -9v stats.json'
