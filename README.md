@@ -67,7 +67,7 @@ working properly for these URLs.
 
 ## Adjustments needed when starting a new application from this template
 
-[] Replace references to baseline in `README.md` and update with relevant project information
-[] Consider removing license from `package.json` and the file `LICENSE`
-[] Replace name and description in `package.json`
-[] Search code for `TODO` and replace as needed
+- [ ] Replace references to baseline in `README.md` and update with relevant project information
+- [ ] Consider removing license from `package.json` and the file `LICENSE`
+- [ ] Replace name and description in `package.json`
+- [ ] Search code for `TODO` and replace as needed
