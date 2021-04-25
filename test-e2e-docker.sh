@@ -46,7 +46,7 @@ docker run \
   -e HOME \
   -e "CYPRESS_BASE_URL=$base_url" \
   -e CYPRESS_CACHE_FOLDER=/cypress \
-  -v "$docker_image_name-cache":/cypress \
+  -v "cypress-cache":/cypress \
   -v "$HOME:$HOME" \
   -u "$(id -u):$(id -g)" \
   -w /data \
