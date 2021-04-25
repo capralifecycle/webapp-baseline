@@ -1,22 +1,67 @@
 # Liflig baseline for web apps
 
-## Development
+## Checklist if using this baseline as a template
+
+- [ ] Replace references to baseline in `README.md` and update with relevant project information
+- [ ] Consider removing license from `package.json` and the file `LICENSE`
+- [ ] Replace name and description in `package.json`
+- [ ] Search code for `TODO` and replace as needed
+- [ ] Remove irrelevant parts from this README (such as this section)
+
+## Contributing
+
+### Pre-commit checklist
+
+All of these will be run as part of CI tests, so it is possible to save
+some time by pushing and let the CI server try this out, and instead handle
+any failure situations.
+
+1. Lint check
+
+   ```bash
+   npm run lint
+   ```
+
+1. Test
+
+   ```bash
+   npm run test
+   ```
+
+1. Build
+
+   ```bash
+   npm run build
+   ```
+
+1. Run e2e tests (see separate section for more details)
+
+   ```bash
+   ./test-e2e-docker.sh
+   ```
+
+### Running webapp locally
+
+Install dependencies:
+
+```bash
+npm ci
+# or use `npm install` if changing dependencies
+```
+
+Run the development server:
 
 ```bash
 npm start
 ```
 
-## Building
-
-```bash
-npm run build
-```
-
-## Testing
+## End-to-end testing
 
 The project uses [Cypress](https://www.cypress.io/) for end-to-end testing.
+
 Some of our Cypress tests verify screenshots. For this to work properly,
-fonts must be exactly the same on the machine running Cypress as in the CI environment. The script `test-e2e-docker.sh` simulates this:
+fonts must be exactly the same on the machine running Cypress as in
+the CI environment. The script `test-e2e-docker.sh` simulates this:
 
 ```bash
 ./test-e2e-docker.sh --update
@@ -64,10 +109,3 @@ to:
 It is used as an example for pipeline. Note that the environment
 detection relies on specific URLs and hence is not currently
 working properly for these URLs.
-
-## Adjustments needed when starting a new application from this template
-
-- [ ] Replace references to baseline in `README.md` and update with relevant project information
-- [ ] Consider removing license from `package.json` and the file `LICENSE`
-- [ ] Replace name and description in `package.json`
-- [ ] Search code for `TODO` and replace as needed
