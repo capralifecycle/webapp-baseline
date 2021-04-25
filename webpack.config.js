@@ -96,7 +96,7 @@ module.exports = (env) => {
     plugins: [
       new CleanWebpackPlugin(),
       new HtmlWebpackPlugin({
-        template: "./public/index.html",
+        template: "src/index.html",
       }),
       new webpack.DefinePlugin({
         __BUILD_INFO__: JSON.stringify({
