@@ -1,53 +1,50 @@
-/* eslint-disable @typescript-eslint/no-unsafe-assignment */
-/* eslint-disable @typescript-eslint/no-unsafe-call */
-/* eslint-disable @typescript-eslint/no-unsafe-member-access */
-/* eslint-disable @typescript-eslint/no-unsafe-return */
-/* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable @typescript-eslint/restrict-template-expressions */
-const path = require("path");
-const fs = require("fs");
-const { CleanWebpackPlugin } = require("clean-webpack-plugin");
-const ReactRefreshPlugin = require("@pmmmwh/react-refresh-webpack-plugin");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const GitRevisionPlugin = require("git-revision-webpack-plugin");
-const SpeedMeasurePlugin = require("speed-measure-webpack-plugin");
-const BundleAnalyzerPlugin = require("webpack-bundle-analyzer")
-  .BundleAnalyzerPlugin;
-const webpack = require("webpack");
+import ReactRefreshPlugin from "@pmmmwh/react-refresh-webpack-plugin";
+import { CleanWebpackPlugin } from "clean-webpack-plugin";
+import * as fs from "fs";
+import GitRevisionPlugin from "git-revision-webpack-plugin";
+import HtmlWebpackPlugin from "html-webpack-plugin";
+import * as path from "path";
+import SpeedMeasurePlugin from "speed-measure-webpack-plugin";
+import * as webpack from "webpack";
+import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
+import packageJson from "./package.json";
 
-const packageJson = require("./package.json");
-
+// TODO: Don't detect container by reading this file, it does
+//  not always exist.
 const inDocker = fs.existsSync("/.dockerenv");
 
 const smp = new SpeedMeasurePlugin({
   disable: !process.env.MEASURE,
 });
 
-module.exports = (env) => {
+const config = (env: Record<string, unknown>): webpack.Configuration => {
   const isProd = env && env.production;
 
   const commitHash = new GitRevisionPlugin({
     commithashCommand: "rev-parse --short HEAD",
   }).commithash();
 
-  const config = {
+  const config: webpack.Configuration = {
     entry: "./src/index.tsx",
     module: {
       rules: [
         {
           test: /\.(ts|tsx)$/,
           use: [
-            !isProd && {
-              loader: "babel-loader",
-              options: {
-                plugins: ["react-refresh/babel"],
-              },
-            },
+            ...(isProd
+              ? []
+              : [
+                  {
+                    loader: "babel-loader",
+                    options: {
+                      plugins: ["react-refresh/babel"],
+                    },
+                  },
+                ]),
             {
               loader: "ts-loader",
             },
-          ].filter(Boolean),
-          use: "ts-loader",
+          ],
           include: path.resolve(__dirname, "src"),
         },
         {
@@ -124,7 +121,7 @@ module.exports = (env) => {
         maxAssetSize: 450 * 1024,
       },
       plugins: [
-        ...config.plugins,
+        ...(config.plugins ?? []),
         process.env.ANALYZE &&
           new BundleAnalyzerPlugin({
             defaultSizes: "gzip",
@@ -135,7 +132,7 @@ module.exports = (env) => {
             reportFilename: "../bundle-analyze-report.html",
             statsFilename: "../stats.json",
           }),
-      ].filter(Boolean),
+      ].filter((it): it is webpack.WebpackPluginInstance => it != null),
     });
   }
 
@@ -158,7 +155,7 @@ module.exports = (env) => {
     },
     module: {
       rules: [
-        ...config.module.rules,
+        ...(config.module?.rules ?? []),
         {
           enforce: "pre",
           test: /\.*js$/,
@@ -166,7 +163,7 @@ module.exports = (env) => {
         },
       ],
     },
-    plugins: [...config.plugins, new ReactRefreshPlugin()],
+    plugins: [...(config.plugins ?? []), new ReactRefreshPlugin()],
     ignoreWarnings: [
       {
         message: /Failed to parse source map/,
@@ -174,3 +171,5 @@ module.exports = (env) => {
     ],
   });
 };
+
+export default config;
