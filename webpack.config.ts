@@ -79,6 +79,7 @@ const config = (env: Record<string, unknown>): webpack.Configuration => {
     },
     output: {
       filename: "[name].[contenthash].js",
+      publicPath: "/",
       path: path.resolve(__dirname, "build"),
     },
     optimization: {

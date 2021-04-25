@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Link } from "react-router-dom";
 import { getConfig } from "../../utils/config-utils";
 import styles from "./WelcomeMessage.module.css";
 
@@ -19,10 +20,13 @@ const WelcomeMessage: React.FC<Props> = ({
       <h1 id="welcome-message">
         Welcome to <span className={styles.highlight}>{appName}</span>.
       </h1>
-      <div id="version-info">
+      <p id="version-info">
         Built {appBuildTime} from commit {commitHash} and is running in{" "}
         {config.environment}
-      </div>
+      </p>
+      <p>
+        <Link to="/about/details">Details</Link>
+      </p>
     </div>
   );
 };
