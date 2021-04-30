@@ -53,11 +53,11 @@ const config = (env: Record<string, unknown>): webpack.Configuration => {
         },
         {
           test: /(?<!\.module)\.css$/,
-          include: path.resolve(__dirname, "src"),
           use: ["style-loader", "css-loader", "postcss-loader"],
         },
         {
           test: /\.module\.css$/,
+          include: path.resolve(__dirname, "src"),
           use: [
             "style-loader",
             {
