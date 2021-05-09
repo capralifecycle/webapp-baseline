@@ -1,7 +1,7 @@
 import ReactRefreshPlugin from "@pmmmwh/react-refresh-webpack-plugin";
 import { CleanWebpackPlugin } from "clean-webpack-plugin";
 import * as fs from "fs";
-import GitRevisionPlugin from "git-revision-webpack-plugin";
+import { GitRevisionPlugin } from "git-revision-webpack-plugin";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 import * as path from "path";
 import SpeedMeasurePlugin from "speed-measure-webpack-plugin";
@@ -20,9 +20,10 @@ const smp = new SpeedMeasurePlugin({
 const config = (env: Record<string, unknown>): webpack.Configuration => {
   const isProd = env && env.production;
 
-  const commitHash = new GitRevisionPlugin({
-    commithashCommand: "rev-parse --short HEAD",
-  }).commithash();
+  const commitHash =
+    new GitRevisionPlugin({
+      commithashCommand: "rev-parse --short HEAD",
+    }).commithash() ?? "unknown";
 
   const config: webpack.Configuration = {
     entry: "./src/index.tsx",
