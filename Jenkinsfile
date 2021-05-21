@@ -29,8 +29,6 @@ buildConfig(
 
     // Pass HOME to persist $HOME/.cache on executor for Cypress install.
     insideToolImage("node:14-browsers", [insideArgs: "-e HOME"]) {
-      releaseVersion = utils.generateLongTag(new Date())
-
       stage("Install dependencies") {
         sh "npm ci"
       }
