@@ -34,10 +34,10 @@ any failure situations.
    npm run build
    ```
 
-1. Run e2e tests (see separate section for more details)
+1. Run Cypress tests (see separate section for more details)
 
    ```bash
-   ./test-e2e-docker.sh
+   ./test-cypress-docker.sh
    ```
 
 ### Running webapp locally
@@ -55,16 +55,16 @@ Run the development server:
 npm start
 ```
 
-## End-to-end testing
+## Browser testing
 
-The project uses [Cypress](https://www.cypress.io/) for end-to-end testing.
+The project uses [Cypress](https://www.cypress.io/) for browser testing.
 
 Some of our Cypress tests verify screenshots. For this to work properly,
 fonts must be exactly the same on the machine running Cypress as in
-the CI environment. The script `test-e2e-docker.sh` simulates this:
+the CI environment. The script `test-cypress-docker.sh` simulates this:
 
 ```bash
-./test-e2e-docker.sh --update
+./test-cypress-docker.sh --update
 ```
 
 The `--update` argument will cause failing image snapshots to be replaced.
@@ -73,7 +73,7 @@ Inspect the updated snapshot before commiting it.
 To run tests in interactive mode (opens a browser window):
 
 ```bash
-npm run test:e2e:open
+npm run test:cypress:open
 ```
 
 ### Measure build performance

@@ -52,14 +52,14 @@ buildConfig(
         archiveWebpackStatsAndReports()
       }
 
-      stage("Test:E2E") {
+      stage("Test:Cypress") {
         try {
           sh "./scripts/serve-dist.sh &"
           sh "./node_modules/.bin/wait-on http-get://localhost:3000"
-          sh "npm run test:e2e"
+          sh "npm run test:cypress"
         } finally {
           sh "pkill -f http-server"
-          archiveArtifacts artifacts: "e2e/cypress/screenshots/**,e2e/cypress/videos/**,e2e/cypress/integration/__image_snapshots__/**", fingerprint: true
+          archiveArtifacts artifacts: "cypress/screenshots/**,cypress/videos/**,cypress/integration/__image_snapshots__/**", fingerprint: true
         }
       }
 
