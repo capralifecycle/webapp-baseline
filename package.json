@@ -5,7 +5,7 @@
   "main": "index.tsx",
   "scripts": {
     "start": "webpack serve",
-    "start:e2e": "DANGEROUSLY_DISABLE_HOST_CHECK=true webpack serve",
+    "start:cypress": "DANGEROUSLY_DISABLE_HOST_CHECK=true webpack serve",
     "build": "webpack --env production",
     "build:measure": "MEASURE=true webpack --env production",
     "build:analyze": "ANALYZE=true webpack --env production",
@@ -13,9 +13,9 @@
     "test": "jest --coverage src",
     "test:watch": "jest src --watch",
     "test:update-snapshots": "jest -u",
-    "test:e2e": "cypress run --config fileServerFolder=e2e/cypress",
-    "test:e2e:docker": "cypress install && npm run test:e2e",
-    "test:e2e:open": "cypress open --config fileServerFolder=e2e/cypress",
+    "test:cypress": "cypress run --config fileServerFolder=cypress",
+    "test:cypress:docker": "cypress install && npm run test:cypress",
+    "test:cypress:open": "cypress open --config fileServerFolder=cypress",
     "lint": "eslint .",
     "lint:fix": "eslint --fix ."
   },

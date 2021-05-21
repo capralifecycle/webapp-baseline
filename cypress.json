@@ -1,13 +1,8 @@
 {
   "baseUrl": "http://localhost:3000",
-  "fileServerFolder": "e2e/cypress/",
-  "fixturesFolder": "e2e/cypress/fixtures",
   "ignoreTestFiles": ["**/__snapshots__/*", "**/__image_snapshots__/*"],
-  "integrationFolder": "e2e/cypress/integration",
-  "pluginsFile": "e2e/cypress/plugins",
-  "screenshotsFolder": "e2e/cypress/screenshots",
-  "supportFile": "e2e/cypress/support",
-  "videosFolder": "e2e/cypress/videos",
+  "pluginsFile": "cypress/plugins",
+  "supportFile": "cypress/support",
   "scrollBehavior": "nearest",
   "env": {
     "cypress-plugin-snapshots": {
