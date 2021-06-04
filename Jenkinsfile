@@ -82,11 +82,10 @@ buildConfig(
             artifactsBucketName: artifactsBucketName,
             pipelineName: "cdkappref-core-dev",
             variables: [
-              "WebappArtifactS3Key": s3Key,
               "devWebappArtifactS3Key": s3Key,
             ],
             variablesNamespace: "webapp",
-            variablesVersion: "v1+v2",
+            variablesVersion: "v2",
             region: "eu-west-1",
           )
         }
@@ -100,11 +99,10 @@ buildConfig(
             artifactsBucketName: artifactsBucketName,
             pipelineName: "cdkappref-core-prod",
             variables: [
-              "WebappArtifactS3Key": s3Key,
               "prodWebappArtifactS3Key": s3Key,
             ],
             variablesNamespace: "webapp",
-            variablesVersion: "v1+v2",
+            variablesVersion: "v2",
             region: "eu-west-1",
           )
         }
