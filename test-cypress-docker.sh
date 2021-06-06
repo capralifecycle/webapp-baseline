@@ -24,8 +24,7 @@ else
   base_url=http://host.docker.internal:3000
 fi
 
-docker_image_name="$(cat package.json | jq .name -r)-cypress"
-docker build -t "$docker_image_name" .
+docker_image=public.ecr.aws/z8l5l4v4/buildtools/tool/node:16-browsers
 
 if [ $update -eq 1 ]; then
   # Before running tests, remove any actual files, so that the files
@@ -37,21 +36,24 @@ if [ $update -eq 1 ]; then
     done
 fi
 
-# shellcheck disable=SC2086
+docker pull "$docker_image"
+
 code=1
+
+# shellcheck disable=SC2086
 docker run \
   --rm \
   -it \
   -v "$PWD:/data" \
   -e HOME \
   -e "CYPRESS_BASE_URL=$base_url" \
-  -e CYPRESS_CACHE_FOLDER=/cypress \
-  -v "cypress-cache":/cypress \
+  -e CYPRESS_CACHE_FOLDER=/cypress-cache \
+  -v cypress-cache:/cypress-cache \
   -v "$HOME:$HOME" \
   -u "$(id -u):$(id -g)" \
   -w /data \
   --network host \
-  $docker_image_name \
+  "$docker_image" \
   $cmd \
   || code=$?
 
