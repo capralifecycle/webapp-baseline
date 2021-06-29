@@ -51,7 +51,7 @@
     "jest-each": "27.0.2",
     "postcss": "8.3.5",
     "postcss-loader": "6.1.0",
-    "prettier": "2.3.1",
+    "prettier": "2.3.2",
     "react-refresh": "0.10.0",
     "source-map-loader": "3.0.0",
     "speed-measure-webpack-plugin": "1.5.0",
