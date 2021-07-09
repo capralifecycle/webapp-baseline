@@ -23,7 +23,7 @@
   "devDependencies": {
     "@cypress/browserify-preprocessor": "3.0.1",
     "@pmmmwh/react-refresh-webpack-plugin": "0.4.3",
-    "@types/jest": "26.0.23",
+    "@types/jest": "26.0.24",
     "@types/jest-each": "24.3.0",
     "@types/react": "17.0.13",
     "@types/react-dom": "17.0.8",
