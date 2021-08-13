@@ -8,6 +8,7 @@ import SpeedMeasurePlugin from "speed-measure-webpack-plugin";
 import * as webpack from "webpack";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import packageJson from "./package.json";
+import MiniCssExtractPlugin from "mini-css-extract-plugin";
 
 // TODO: Don't detect container by reading this file, it does
 //  not always exist.
@@ -54,13 +55,17 @@ const config = (env: Record<string, unknown>): webpack.Configuration => {
         },
         {
           test: /(?<!\.module)\.css$/,
-          use: ["style-loader", "css-loader", "postcss-loader"],
+          use: [
+            isProd ? MiniCssExtractPlugin.loader : "style-loader",
+            "css-loader",
+            "postcss-loader",
+          ],
         },
         {
           test: /\.module\.css$/,
           include: path.resolve(__dirname, "src"),
           use: [
-            "style-loader",
+            isProd ? MiniCssExtractPlugin.loader : "style-loader",
             {
               loader: "css-loader",
               options: {
@@ -124,6 +129,7 @@ const config = (env: Record<string, unknown>): webpack.Configuration => {
       },
       plugins: [
         ...(config.plugins ?? []),
+        new MiniCssExtractPlugin(),
         process.env.ANALYZE &&
           new BundleAnalyzerPlugin({
             defaultSizes: "gzip",
