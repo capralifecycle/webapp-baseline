@@ -50,7 +50,7 @@
     "http-server": "0.12.3",
     "jest": "27.1.0",
     "jest-each": "27.1.0",
-    "mini-css-extract-plugin": "2.2.0",
+    "mini-css-extract-plugin": "2.2.2",
     "postcss": "8.3.6",
     "postcss-loader": "6.1.1",
     "prettier": "2.3.2",
