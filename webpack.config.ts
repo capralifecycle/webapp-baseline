@@ -155,9 +155,9 @@ const config = (env: Record<string, unknown>): webpack.Configuration => {
     devServer: {
       host: inDocker ? "0.0.0.0" : "127.0.0.1",
       allowedHosts:
-        process.env.DANGEROUSLY_DISABLE_HOST_CHECK === "true" ? 'all' : 'auto',
+        process.env.DANGEROUSLY_DISABLE_HOST_CHECK === "true" ? "all" : "auto",
       static: {
-        directory: "./build"
+        directory: "./build",
       },
       port: 3000,
       historyApiFallback: true,
