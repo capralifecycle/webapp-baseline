@@ -154,9 +154,11 @@ const config = (env: Record<string, unknown>): webpack.Configuration => {
     devtool: "eval-source-map",
     devServer: {
       host: inDocker ? "0.0.0.0" : "127.0.0.1",
-      disableHostCheck:
-        process.env.DANGEROUSLY_DISABLE_HOST_CHECK === "true" ? true : false,
-      contentBase: "./build",
+      allowedHosts:
+        process.env.DANGEROUSLY_DISABLE_HOST_CHECK === "true" ? 'all' : 'auto',
+      static: {
+        directory: "./build"
+      },
       port: 3000,
       historyApiFallback: true,
       hot: true,
