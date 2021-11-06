@@ -21,7 +21,7 @@
   },
   "license": "Apache-2.0",
   "devDependencies": {
-    "@cypress/browserify-preprocessor": "3.0.1",
+    "@cypress/browserify-preprocessor": "3.0.2",
     "@pmmmwh/react-refresh-webpack-plugin": "0.5.1",
     "@types/jest": "27.0.2",
     "@types/jest-each": "24.3.0",
