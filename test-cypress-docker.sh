@@ -27,9 +27,8 @@ fi
 docker_image=public.ecr.aws/z8l5l4v4/buildtools/tool/node:16-browsers
 
 if [ $update -eq 1 ]; then
-  # Before running tests, remove any actual files, so that the files
-  # we see later will become new versions.
-  find cypress/integration -name "*.actual.png" -print0 |
+    # Before running tests, remove all current screenshots so they will be updated
+    find cypress/integration -name "*.png" -print0 |
     while IFS= read -r -d '' line; do
       echo "Removing previous file: $line"
       rm -- "$line"
@@ -56,14 +55,5 @@ docker run \
   "$docker_image" \
   $cmd \
   || code=$?
-
-if [ $update -eq 1 ]; then
-  find cypress/integration -name "*.actual.png" -print0 |
-    while IFS= read -r -d '' line; do
-      echo "Found updated snapshot: $line"
-      echo "  Replacing.. Retest to verify"
-      mv -- "$line" "${line/%.actual.png}.png"
-    done
-fi
 
 exit $code
