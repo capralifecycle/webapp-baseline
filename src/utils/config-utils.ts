@@ -14,6 +14,7 @@ type EnvToConfigMap = {
   [key in Environment]: AppConfiguration;
 };
 
+// TODO: Change apiUrl according to environment
 const envToConfigMap: EnvToConfigMap = {
   [Environment.LOCAL]: {
     apiUrl: "http://localhost:8080",
