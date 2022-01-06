@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "description": "Baseline for creating React+Typescript web apps",
   "main": "index.tsx",
+  "license": "Apache-2.0",
+  "private": true,
   "scripts": {
     "start": "webpack serve",
     "start:cypress": "DANGEROUSLY_DISABLE_HOST_CHECK=true webpack serve",
@@ -19,7 +21,6 @@
     "lint": "eslint .",
     "lint:fix": "eslint --fix ."
   },
-  "license": "Apache-2.0",
   "devDependencies": {
     "@cypress/browserify-preprocessor": "3.0.2",
     "@pmmmwh/react-refresh-webpack-plugin": "0.5.4",
