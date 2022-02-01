@@ -1,4 +1,15 @@
 # Liflig baseline for web apps
+This project serves as a baseline when you wish to create a new webapp which is a single page application.
+
+## Technologies
+- **React** for components
+- **Typescript** for type safety
+- **React-router** for routing
+- **Jest** for unit testing and **Cypress** for visual testing
+- **Webpack** for bundling
+- **Eslint** and **prettier** for linting
+- **Renovate** for automatic updates of dependencies
+- **Jenkins** for building and testing application for CI
 
 ## Checklist if using this baseline as a template
 
