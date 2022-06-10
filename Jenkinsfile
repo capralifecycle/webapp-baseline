@@ -58,7 +58,8 @@ buildConfig(
           sh "./node_modules/.bin/wait-on http-get://localhost:3000"
           sh "npm run test:cypress"
         } finally {
-          sh "pkill -f http-server"
+          // bug causes this to take forever, but this is also not necessary
+          // sh "pkill -f http-server"
           archiveArtifacts artifacts: "cypress/screenshots/**,cypress/videos/**,cypress/integration/__image_snapshots__/**", fingerprint: true
         }
       }
