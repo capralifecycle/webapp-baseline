@@ -6,6 +6,9 @@ import HtmlWebpackPlugin from "html-webpack-plugin";
 import * as path from "path";
 import SpeedMeasurePlugin from "speed-measure-webpack-plugin";
 import * as webpack from "webpack";
+// Needed so typings are correct
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import * as devServer from "webpack-dev-server";
 import { BundleAnalyzerPlugin } from "webpack-bundle-analyzer";
 import packageJson from "./package.json";
 import MiniCssExtractPlugin from "mini-css-extract-plugin";
