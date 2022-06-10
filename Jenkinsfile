@@ -30,7 +30,7 @@ buildConfig(
     // Pass HOME to persist $HOME/.cache on executor for Cypress install.
     insideToolImage("node:16-browsers", [insideArgs: "-e HOME"]) {
       stage("Install dependencies") {
-        sh "npm ci"
+        sh "npm ci --legacy-peer-deps"
       }
 
       stage("Lint") {
