@@ -4,11 +4,12 @@
     "strict": true,
     "module": "commonjs",
     "jsx": "react",
-    "target": "es5",
-    "lib": ["dom", "es2017"],
+    "target": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "skipLibCheck": true,
     "moduleResolution": "node",
     "esModuleInterop": true,
     "resolveJsonModule": true
   },
-  "include": ["src", "*.js", "webpack.config.ts"]
+  "include": ["src", "*.js"]
 }
