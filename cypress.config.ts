@@ -6,7 +6,7 @@
 import { defineConfig } from "cypress";
 
 const browserify = require("@cypress/browserify-preprocessor");
-const { initPlugin } = require("cypress-plugin-snapshots/plugin");
+const getCompareSnapshotsPlugin = require("cypress-image-diff-js/dist/plugin");
 
 export default defineConfig({
   e2e: {
@@ -34,7 +34,7 @@ export default defineConfig({
         }),
       );
 
-      initPlugin(on, config);
+      getCompareSnapshotsPlugin(on, config);
       return config;
     },
   },

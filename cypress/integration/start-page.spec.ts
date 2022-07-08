@@ -12,6 +12,6 @@ describe("start page", () => {
         obj.text("cypress snapshot");
       });
 
-    cy.document().toMatchImageSnapshot();
+    cy.compareSnapshot(Cypress.currentTest.title);
   });
 });
