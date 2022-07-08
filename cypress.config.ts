@@ -5,8 +5,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import { defineConfig } from "cypress";
 
-const browserify = require("@cypress/browserify-preprocessor");
-const { initPlugin } = require("cypress-plugin-snapshots/plugin");
+const getCompareSnapshotsPlugin = require("cypress-image-diff-js/dist/plugin");
 
 export default defineConfig({
   e2e: {
@@ -15,26 +14,11 @@ export default defineConfig({
     excludeSpecPattern: ["**/__snapshots__/*", "**/__image_snapshots__/*"],
     supportFile: "cypress/support/index.ts",
     scrollBehavior: "nearest",
-    env: {
-      "cypress-plugin-snapshots": {
-        imageConfig: {
-          threshold: 0,
-        },
-      },
-    },
     setupNodeEvents(on, config) {
       // `on` is used to hook into various events Cypress emits
       // `config` is the resolved Cypress config
 
-      // Workaround for https://github.com/meinaart/cypress-plugin-snapshots/issues/143
-      on(
-        "file:preprocessor",
-        browserify({
-          typescript: require.resolve("typescript"),
-        }),
-      );
-
-      initPlugin(on, config);
+      getCompareSnapshotsPlugin(on, config);
       return config;
     },
   },
