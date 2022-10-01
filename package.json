@@ -30,7 +30,7 @@
     "@typescript-eslint/parser": "5.38.1",
     "@vitejs/plugin-react": "2.1.0",
     "autoprefixer": "10.4.12",
-    "cypress": "10.8.0",
+    "cypress": "10.9.0",
     "cypress-image-diff-js": "1.21.1",
     "eslint": "8.24.0",
     "eslint-config-prettier": "8.5.0",
