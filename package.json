@@ -43,7 +43,7 @@
     "jest-each": "29.4.1",
     "mini-css-extract-plugin": "2.7.2",
     "postcss": "8.4.21",
-    "prettier": "2.8.3",
+    "prettier": "2.8.4",
     "react-refresh": "0.14.0",
     "ts-jest": "29.0.5",
     "ts-node": "10.9.1",
