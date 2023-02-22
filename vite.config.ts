@@ -1,27 +1,23 @@
 import react from "@vitejs/plugin-react";
 import fs from "fs";
-import { GitRevisionPlugin } from "git-revision-webpack-plugin";
 import path from "path";
 import { defineConfig } from "vite";
 import packageJson from "./package.json";
 import checker from "vite-plugin-checker";
+import * as child from "child_process";
 
 const inDocker = fs.existsSync("/.dockerenv");
 
-const commitHash =
-  new GitRevisionPlugin({
-    commithashCommand: "rev-parse --short HEAD",
-  }).commithash() ?? "unknown";
-
 export default (env: { mode?: string }) => {
   const isProd = env.mode === "production";
+  const commitHash = child.execSync("git rev-parse --short HEAD").toString();
 
   return defineConfig({
     plugins: [
       react(),
       checker({
         typescript: true,
-        eslint: { lintCommand: "eslint ." },
+        eslint: { lintCommand: "eslint src" },
         overlay: { initialIsOpen: false },
       }),
     ],
