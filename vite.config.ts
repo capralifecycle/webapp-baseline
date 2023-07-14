@@ -40,5 +40,9 @@ export default (env: { mode?: string }) => {
       host: inDocker ? "0.0.0.0" : "127.0.0.1",
       port: 3000,
     },
+    preview: {
+      host: inDocker ? "0.0.0.0" : "127.0.0.1",
+      port: 3000,
+    },
   });
 };

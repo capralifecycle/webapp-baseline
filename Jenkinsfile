@@ -53,7 +53,7 @@ buildConfig(
 
       stage("Test:Cypress") {
         try {
-          sh "./scripts/serve-dist.sh &"
+          sh "npm run preview &"
           sh "./node_modules/.bin/wait-on http-get://localhost:3000"
           sh "npm run test:cypress"
         } finally {
