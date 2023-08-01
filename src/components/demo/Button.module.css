@@ -1,0 +1,31 @@
+.btn {
+  border-radius: 100px;
+  border: none;
+  outline: none;
+  padding: 10px 15px;
+}
+
+.btn.default{
+  background-color: #8B939C;
+  color: white;
+}
+
+.btn.primary {
+  background-color: #9B95CB;
+  color: white;
+}
+
+.btn.success {
+  background-color: #4DC154;
+  color: white;
+}
+
+.btn.warning {
+  background-color: #BECC5A;
+  color: white;
+}
+
+.btn.danger {
+  background-color: #BF0603;
+  color: white;
+}

@@ -26,6 +26,8 @@ const WelcomeMessage: React.FC<Props> = ({
       </p>
       <p>
         <Link to="/about/details">Details</Link>
+        <br />
+        <Link to="/demo">Demo Page</Link>
       </p>
     </div>
   );
