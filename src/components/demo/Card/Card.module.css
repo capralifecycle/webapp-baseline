@@ -1,0 +1,26 @@
+.card {
+  border-radius: 7px;
+  border: 1px solid;
+  padding: 15px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.card.default{
+  border-color: #8B939C;
+}
+
+.card.primary {
+  border-color: #9B95CB;
+}
+
+.card.success {
+  border-color: #4DC154;
+}
+
+.card.warning {
+  border-color: #BECC5A;
+}
+
+.card.danger {
+  border-color: #BF0603;
+}
