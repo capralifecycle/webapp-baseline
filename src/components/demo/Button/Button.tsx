@@ -2,7 +2,7 @@ import * as React from "react";
 import styles from "./Button.module.css";
 
 interface Props {
-  intent?: "default" | "primary" | "success" | "warning" | "danger";
+  intent?: "default" | "success" | "danger";
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
   children?: React.ReactNode;
 }

@@ -22,7 +22,7 @@ const DemoPage: React.FC<Props> = () => {
       }}
     >
       <Center>
-        <Card width={300} height={110}>
+        <Card width={300} height={106}>
           <center>
             <p>Count is currently {count}.</p>
             <Button
