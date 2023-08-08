@@ -19,9 +19,12 @@ const DemoPage: React.FC<Props> = () => {
         height: "100%",
         width: "100%",
         backgroundColor: "#fcfcfc",
+        paddingBottom: 200,
+        boxSizing: "border-box",
       }}
     >
       <Center>
+        <h1>This is a demo page</h1>
         <Card width={300} height={106}>
           <center>
             <p>Count is currently {count}.</p>
