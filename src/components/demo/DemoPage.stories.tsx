@@ -10,4 +10,5 @@ export const DefaultStory: Story = () => {
     </>
   );
 };
+
 DefaultStory.meta = { iframed: true };

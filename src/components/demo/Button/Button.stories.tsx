@@ -19,3 +19,7 @@ export const Danger: Story = () => (
     My Button
   </Button>
 );
+
+Danger.meta = {
+  testWithSnapshot: true,
+};

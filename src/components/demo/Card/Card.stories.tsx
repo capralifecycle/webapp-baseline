@@ -28,3 +28,7 @@ export const DefaultStory: Story = () => {
     </>
   );
 };
+
+DefaultStory.meta = {
+  testWithSnapshot: true,
+};
