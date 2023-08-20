@@ -30,7 +30,7 @@
     "@vitejs/plugin-react": "4.0.4",
     "autoprefixer": "10.4.15",
     "cypress": "12.17.4",
-    "cypress-image-diff-js": "1.27.0",
+    "cypress-image-diff-js": "1.27.1",
     "eslint": "8.47.0",
     "eslint-config-prettier": "8.10.0",
     "eslint-plugin-deprecation": "1.5.0",
