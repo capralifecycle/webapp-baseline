@@ -1,7 +1,7 @@
 import * as React from "react";
 import type { Story } from "@ladle/react";
 
-import Card from "./Card";
+import Card from "../../../../src/components/demo/Card";
 
 export const DefaultStory: Story = () => {
   return (
@@ -27,8 +27,4 @@ export const DefaultStory: Story = () => {
       </Card>
     </>
   );
-};
-
-DefaultStory.meta = {
-  testWithSnapshot: true,
 };

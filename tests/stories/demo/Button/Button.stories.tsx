@@ -2,7 +2,7 @@ import * as React from "react";
 import type { Story } from "@ladle/react";
 import { action } from "@ladle/react";
 
-import Button from "./Button";
+import Button from "../../../../src/components/demo/Button";
 
 export const Default: Story = () => (
   <Button onClick={action("clicked")}>My Button</Button>
@@ -19,7 +19,3 @@ export const Danger: Story = () => (
     My Button
   </Button>
 );
-
-Danger.meta = {
-  testWithSnapshot: true,
-};

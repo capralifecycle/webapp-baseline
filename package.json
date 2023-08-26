@@ -17,10 +17,15 @@
     "test:cypress:docker": "cypress install && npm run test:cypress",
     "test:cypress:open": "cypress open",
     "lint": "eslint src",
-    "lint:fix": "eslint --fix ."
+    "lint:fix": "eslint --fix .",
+    "ladle:serve": "ladle serve",
+    "ladle:test": "playwright test",
+    "ladle:test:update": "playwright test -u"
   },
   "devDependencies": {
     "@cypress/browserify-preprocessor": "3.0.2",
+    "@ladle/react": "^2.17.1",
+    "@playwright/test": "^1.37.0",
     "@types/jest": "29.5.3",
     "@types/react": "18.2.18",
     "@types/react-dom": "18.2.7",
