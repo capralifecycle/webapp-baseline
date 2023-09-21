@@ -45,11 +45,15 @@ buildConfig(
         try {
 
           docker.image('mcr.microsoft.com/playwright:v1.37.0-jammy').inside {
-            sh "npm run ladle:build"
-            sh "npm run preview &"
-            sh "./node_modules/.bin/wait-on http-get://localhost:3000"
             sh "npm run ladle:playwright"
           }
+
+          //docker.image('mcr.microsoft.com/playwright:v1.37.0-jammy').inside {
+          //  sh "npm run ladle:build"
+          //  sh "npm run preview &"
+          //  sh "./node_modules/.bin/wait-on http-get://localhost:3000"
+          //  sh "npm run ladle:playwright"
+          //}
         } finally {
           // bug causes this to take forever, but this is also not necessary
           // sh "pkill -f http-server"
