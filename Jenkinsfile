@@ -41,16 +41,6 @@ buildConfig(
         sh "npm test"
       }
 
-      stage("Generate build") {
-        sh "npm run build:ci"
-        stash name: 'build', includes: 'build/**'
-      }
-
-      stage("Archive artifacts and stats") {
-        sh "./scripts/generate-size-reports.sh"
-        archiveWebpackStatsAndReports()
-      }
-
       stage("Test with Ladle") {
         try {
 
@@ -66,6 +56,28 @@ buildConfig(
           //archiveArtifacts artifacts: "cypress/videos/**, cypress-visual-screenshots/**", fingerprint: true
         }
       }
+
+      stage("Generate build") {
+        sh "npm run build:ci"
+        stash name: 'build', includes: 'build/**'
+      }
+
+      stage("Archive artifacts and stats") {
+        sh "./scripts/generate-size-reports.sh"
+        archiveWebpackStatsAndReports()
+      }
+
+      //stage("Test:Cypress") {
+      //  try {
+      //    sh "npm run preview &"
+      //    sh "./node_modules/.bin/wait-on http-get://localhost:3000"
+      //    sh "npm run test:cypress"
+      //  } finally {
+      //    // bug causes this to take forever, but this is also not necessary
+      //    // sh "pkill -f http-server"
+      //    archiveArtifacts artifacts: "cypress/videos/**, cypress-visual-screenshots/**", fingerprint: true
+      //  }
+      //}
 
       def s3Key
       stage("Upload to S3") {
