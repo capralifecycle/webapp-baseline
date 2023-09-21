@@ -38,7 +38,9 @@ buildConfig(
       }
 
       stage("Test:UNIT") {
-        sh "npm test"
+        docker.image('mcr.microsoft.com/playwright:v1.37.0-jammy').inside {
+          sh "npm test"
+        }
       }
 
       stage("Generate build") {
