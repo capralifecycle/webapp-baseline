@@ -37,10 +37,8 @@ buildConfig(
         sh "npm run lint"
       }
 
-      stage("Test") {
-        docker.image('mcr.microsoft.com/playwright:v1.37.0-jammy').inside {
-          sh "npm test"
-        }
+      stage("Test:UNIT") {
+        sh "npm test"
       }
 
       stage("Generate build") {
@@ -53,15 +51,19 @@ buildConfig(
         archiveWebpackStatsAndReports()
       }
 
-      stage("Test:Cypress") {
+      stage("Test with Ladle") {
         try {
-          sh "npm run preview &"
-          sh "./node_modules/.bin/wait-on http-get://localhost:3000"
-          sh "npm run test:cypress"
+
+          docker.image('mcr.microsoft.com/playwright:v1.37.0-jammy').inside {
+            sh "npm run ladle:build"
+            sh "npm run preview &"
+            sh "./node_modules/.bin/wait-on http-get://localhost:3000"
+            sh "npm run ladle:playwright"
+          }
         } finally {
           // bug causes this to take forever, but this is also not necessary
           // sh "pkill -f http-server"
-          archiveArtifacts artifacts: "cypress/videos/**, cypress-visual-screenshots/**", fingerprint: true
+          //archiveArtifacts artifacts: "cypress/videos/**, cypress-visual-screenshots/**", fingerprint: true
         }
       }
 

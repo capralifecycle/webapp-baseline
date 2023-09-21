@@ -10,7 +10,7 @@
     "build": "vite build --mode production",
     "build:ci": "npm run build",
     "preview": "vite preview",
-    "test": "npm run test:jest && npm run ladle:ci",
+    "test": "npm run test:jest",
     "test:jest": "jest --coverage src",
     "test:jest:watch": "jest src --watch",
     "test:jest:update-snapshots": "jest -u",
@@ -19,9 +19,9 @@
     "test:cypress:open": "cypress open",
     "lint": "eslint src",
     "lint:fix": "eslint --fix .",
-    "ladle:ci": "ladle build && vite preview & sleep 3 && npm run ladle:test",
+    "ladle:build": "ladle build",
     "ladle:serve": "ladle serve",
-    "ladle:test": "playwright test",
+    "ladle:playwright": "playwright test",
     "ladle:test:update": "playwright test -u"
   },
   "devDependencies": {
