@@ -1,6 +1,6 @@
 import { test as base, Page } from "@playwright/test";
 
-export const URL = "http://localhost:61000";
+export const URL = "http://localhost:3000";
 
 interface StoryReturn {
   page: Page;
