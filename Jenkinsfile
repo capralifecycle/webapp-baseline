@@ -53,7 +53,7 @@ buildConfig(
         } finally {
           // bug causes this to take forever, but this is also not necessary
           // sh "pkill -f http-server"
-          //archiveArtifacts artifacts: "cypress/videos/**, cypress-visual-screenshots/**", fingerprint: true
+          archiveArtifacts artifacts: "test-results/**", fingerprint: true
         }
       }
 
