@@ -28,7 +28,7 @@ buildConfig(
     checkout scm
 
     // Pass HOME to persist $HOME/.cache on executor for Cypress install.
-    insideToolImage("node:16-browsers", [insideArgs: "-e HOME"]) {
+    insideToolImage("node:16", [insideArgs: "-e HOME"]) {
       stage("Install dependencies") {
         sh "npm ci --legacy-peer-deps"
       }
@@ -37,7 +37,7 @@ buildConfig(
         sh "npm run lint"
       }
 
-      stage("Test:UNIT") {
+      stage("Test") {
         docker.image('mcr.microsoft.com/playwright:v1.37.0-jammy').inside {
           sh "npm test"
         }
