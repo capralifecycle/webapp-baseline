@@ -27,7 +27,7 @@
     "@types/react-router-dom": "5.3.3",
     "@typescript-eslint/eslint-plugin": "6.7.2",
     "@typescript-eslint/parser": "6.7.2",
-    "@vitejs/plugin-react": "4.0.4",
+    "@vitejs/plugin-react": "4.1.0",
     "autoprefixer": "10.4.16",
     "cypress": "12.17.4",
     "cypress-image-diff-js": "1.30.1",
