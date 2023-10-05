@@ -22,7 +22,7 @@
     "ladle:build": "ladle build",
     "ladle:serve": "ladle serve",
     "ladle:playwright": "playwright test",
-    "ladle:test:update": "playwright test -u"
+    "ladle:playwright:update": "playwright test -u"
   },
   "devDependencies": {
     "@cypress/browserify-preprocessor": "3.0.2",
