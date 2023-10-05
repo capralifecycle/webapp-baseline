@@ -57,6 +57,7 @@ buildConfig(
         } finally {
           // bug causes this to take forever, but this is also not necessary
           // sh "pkill -f http-server"
+          sh "mkdir -p test-results/ && touch test-results/hello"
           archiveArtifacts artifacts: "test-results/**", fingerprint: true
         }
       }
