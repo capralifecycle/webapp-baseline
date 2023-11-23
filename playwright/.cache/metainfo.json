@@ -1,0 +1,111 @@
+{
+  "version": "1.40.0",
+  "viteVersion": "4.5.0",
+  "registerSourceHash": "3c0dec303d9dc599e625ff3e1e0dcf24eb262be1",
+  "components": [
+    {
+      "fullName": "_Users_trulsstenrud_capralifecycle_liflig_internal_webapp_baseline_src_components_WelcomeMessage_index_tsx",
+      "importedNameProperty": "",
+      "deps": [
+        "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/src/components/WelcomeMessage/index.tsx",
+        "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/src/components/WelcomeMessage/WelcomeMessage.tsx",
+        "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/node_modules/react/jsx-runtime.js",
+        "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/node_modules/react-router-dom/dist/index.js",
+        "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/node_modules/react/index.js",
+        "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/node_modules/react-dom/index.js",
+        "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/node_modules/react-router/dist/index.js",
+        "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/node_modules/@remix-run/router/dist/router.js",
+        "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/src/components/WelcomeMessage/WelcomeMessage.module.css?used",
+        "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/src/utils/config-utils.ts"
+      ],
+      "importPath": "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/src/components/WelcomeMessage/index.tsx",
+      "isModuleOrAlias": false
+    },
+    {
+      "fullName": "react_router_dom_BrowserRouter",
+      "importedName": "BrowserRouter",
+      "importedNameProperty": "",
+      "deps": [
+        "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/node_modules/react-router-dom/dist/index.js",
+        "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/node_modules/react/index.js",
+        "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/node_modules/react-dom/index.js",
+        "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/node_modules/react-router/dist/index.js",
+        "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/node_modules/@remix-run/router/dist/router.js"
+      ],
+      "importPath": "react-router-dom",
+      "isModuleOrAlias": true
+    }
+  ],
+  "tests": {
+    "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/componentTesting/example.spec.tsx": {
+      "timestamp": 1700842146439.1924,
+      "components": [
+        "_Users_trulsstenrud_capralifecycle_liflig_internal_webapp_baseline_src_components_WelcomeMessage_index_tsx",
+        "react_router_dom_BrowserRouter"
+      ]
+    },
+    "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/tests/componentTesting/example.spec.tsx": {
+      "timestamp": 1701075540210.073,
+      "components": [
+        "_Users_trulsstenrud_capralifecycle_liflig_internal_webapp_baseline_src_components_WelcomeMessage_index_tsx",
+        "react_router_dom_BrowserRouter"
+      ]
+    }
+  },
+  "sources": {
+    "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/playwright/index.html": {
+      "timestamp": 1700839651488.5476
+    },
+    "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/playwright/index.tsx": {
+      "timestamp": 1700839651488.7239
+    },
+    "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/node_modules/react/index.js": {
+      "timestamp": 1701072484765.9485
+    },
+    "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/node_modules/react-router-dom/dist/index.js": {
+      "timestamp": 1701072484940.5195
+    },
+    "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/node_modules/react-dom/client.js": {
+      "timestamp": 1701072484765.0662
+    },
+    "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/src/components/WelcomeMessage/index.tsx": {
+      "timestamp": 1636053189357.6008
+    },
+    "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/node_modules/react/cjs/react.production.min.js": {
+      "timestamp": 1701072485312.23
+    },
+    "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/node_modules/react-dom/index.js": {
+      "timestamp": 1701072484842.8425
+    },
+    "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/node_modules/react-router/dist/index.js": {
+      "timestamp": 1701072484916.0193
+    },
+    "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/node_modules/@remix-run/router/dist/router.js": {
+      "timestamp": 1701072485254.186
+    },
+    "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/src/components/WelcomeMessage/WelcomeMessage.tsx": {
+      "timestamp": 1701075434084.993
+    },
+    "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/node_modules/react-dom/cjs/react-dom.production.min.js": {
+      "timestamp": 1701072485780.5696
+    },
+    "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/node_modules/react/jsx-runtime.js": {
+      "timestamp": 1701072484890.2212
+    },
+    "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/node_modules/scheduler/index.js": {
+      "timestamp": 1701072484714.3538
+    },
+    "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/src/utils/config-utils.ts": {
+      "timestamp": 1645712294512.533
+    },
+    "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/node_modules/react/cjs/react-jsx-runtime.production.min.js": {
+      "timestamp": 1701072485174.4824
+    },
+    "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/node_modules/scheduler/cjs/scheduler.production.min.js": {
+      "timestamp": 1701072485253.437
+    },
+    "/Users/trulsstenrud/capralifecycle/liflig-internal/webapp-baseline/src/components/WelcomeMessage/WelcomeMessage.module.css": {
+      "timestamp": 1636053189357.3162
+    }
+  }
+}

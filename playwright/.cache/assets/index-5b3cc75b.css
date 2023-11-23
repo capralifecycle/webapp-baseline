@@ -1,0 +1,12 @@
+._container_1oq48_1 {
+  display: flex;
+  flex-flow: column;
+}
+
+._container_1oq48_1 > div {
+  margin-bottom: var(--spacing-normal);
+}
+
+._highlight_1oq48_10 {
+  color: var(--color-primary);
+}
