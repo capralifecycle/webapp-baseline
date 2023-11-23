@@ -5,7 +5,7 @@ This project serves as a baseline when you wish to create a new webapp which is 
 - **React** for components
 - **Typescript** for type safety
 - **React-router** for routing
-- **Jest** for unit testing and **Cypress** for visual testing
+- **Vitest** for unit testing and **Cypress** for visual testing
 - **Vite** for bundling
 - **Eslint** and **prettier** for linting
 - **Renovate** for automatic updates of dependencies
