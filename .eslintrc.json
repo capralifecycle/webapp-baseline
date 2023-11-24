@@ -15,7 +15,7 @@
   ],
   "parserOptions": {
     "ecmaVersion": 2022,
-    "project": ["./tsconfig.json", "./cypress/tsconfig.json"]
+    "project": ["./tsconfig.json"]
   },
   "settings": {
     "react": {

@@ -1,3 +1,4 @@
+
 {
   "compilerOptions": {
     "sourceMap": true,
@@ -11,5 +12,5 @@
     "esModuleInterop": true,
     "resolveJsonModule": true
   },
-  "include": ["src", "*.js", "vite.config.ts"]
+  "include": ["src", "*.js", "vite.config.ts", "playwright.config.ts", "e2e"],
 }
