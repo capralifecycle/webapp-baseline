@@ -18,7 +18,7 @@ const WelcomeMessage: React.FC<Props> = ({
   return (
     <div className={styles.container}>
       <h1 id="welcome-message">
-        Welco to <span className={styles.highlight}>{appName}</span>.
+        Welcome to <span className={styles.highlight}>{appName}</span>.
       </h1>
       <p data-testid="version-info">
         Built {appBuildTime} from commit {commitHash} and is running in{" "}
