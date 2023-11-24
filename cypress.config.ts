@@ -5,7 +5,7 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import { defineConfig } from "cypress";
 
-const getCompareSnapshotsPlugin = require("cypress-image-diff-js/dist/plugin");
+import getCompareSnapshotsPlugin from "cypress-image-diff-js/dist/plugin";
 
 export default defineConfig({
   e2e: {
