@@ -14,10 +14,9 @@
     "test": "jest --coverage src",
     "test:watch": "jest src --watch",
     "test:update-snapshots": "jest -u",
-    "test:e2e": "playwright test --reporter=list",
-    "test:e2e:ci": "CI=true playwright test --reporter=list",
-    "test:cypress:docker": "cypress install && npm run test:cypress",
-    "test:cypress:open": "cypress open",
+    "test:e2e": "playwright test",
+    "test:e2e:ci": "CI=true playwright test ",
+    "test:e2e:update-snapshots": "playwright test --update-snapshots",
     "lint": "eslint src",
     "lint:fix": "eslint --fix ."
   },
