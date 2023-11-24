@@ -15,8 +15,10 @@
     "test:watch": "jest src --watch",
     "test:update-snapshots": "jest -u",
     "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui",
     "test:e2e:ci": "CI=true playwright test ",
-    "test:e2e:update-snapshots": "playwright test --update-snapshots",
+    "test:e2e:docker": "DOCKER=true playwright test",
+    "test:e2e:docker:update-snapshots": "DOCKER=true playwright test --update-snapshots",
     "lint": "eslint src",
     "lint:fix": "eslint --fix ."
   },
