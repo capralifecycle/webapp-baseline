@@ -27,8 +27,10 @@ buildConfig(
   dockerNode {
     checkout scm
 
-    // Pass HOME to persist $HOME/.cache on executor for Cypress install.
-    insideToolImage("node:18-browsers", [insideArgs: "-e HOME"]) {
+    def img = docker.image("mcr.microsoft.com/playwright:v1.40.0-jammy")
+    img.pull()
+    
+    img.inside("-e AWS_CONTAINER_CREDENTIALS_RELATIVE_URI"){
       stage("Install dependencies") {
         sh "npm ci --legacy-peer-deps"
       }
