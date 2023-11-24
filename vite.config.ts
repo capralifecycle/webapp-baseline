@@ -5,6 +5,7 @@ import { defineConfig } from "vite";
 import packageJson from "./package.json";
 import checker from "vite-plugin-checker";
 import * as child from "child_process";
+import autoprefixer from "autoprefixer";
 
 const inDocker = fs.existsSync("/.dockerenv");
 
@@ -21,6 +22,13 @@ export default (env: { mode?: string }) => {
         overlay: { initialIsOpen: false },
       }),
     ],
+    css:{
+      postcss:{
+        plugins:[
+          autoprefixer({})
+        ]
+      }
+    },
     define: {
       __BUILD_INFO__: JSON.stringify({
         appName: packageJson.name,

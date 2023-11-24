@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "Baseline for creating React+Typescript web apps",
   "main": "index.tsx",
+  "type": "module",
   "license": "Apache-2.0",
   "private": true,
   "scripts": {
