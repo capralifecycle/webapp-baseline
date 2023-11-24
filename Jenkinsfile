@@ -40,7 +40,6 @@ buildConfig(
       }
 
       stage("Generate build") {
-        sh "npx playwright install"
         sh "npm run build:ci"
         stash name: 'build', includes: 'build/**'
       }
