@@ -20,7 +20,7 @@ const WelcomeMessage: React.FC<Props> = ({
       <h1 id="welcome-message">
         Welcome to <span className={styles.highlight}>{appName}</span>.
       </h1>
-      <p id="version-info">
+      <p data-testid="version-info">
         Built {appBuildTime} from commit {commitHash} and is running in{" "}
         {config.environment}
       </p>

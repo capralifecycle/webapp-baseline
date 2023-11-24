@@ -37,29 +37,19 @@ buildConfig(
         sh "npm run lint"
       }
 
-      stage("Test:UNIT") {
-        sh "npm test"
-      }
-
       stage("Generate build") {
         sh "npm run build:ci"
         stash name: 'build', includes: 'build/**'
       }
 
-      stage("Archive artifacts and stats") {
-        sh "./scripts/generate-size-reports.sh"
-        archiveWebpackStatsAndReports()
+      stage("Test:Unit"){
+        sh "npm run test"
       }
-
-      stage("Test:Cypress") {
+      stage("Test:E2E") {
         try {
-          sh "npm run preview &"
-          sh "./node_modules/.bin/wait-on http-get://localhost:3000"
-          sh "npm run test:cypress"
+          sh "npm run test:e2e:ci"
         } finally {
-          // bug causes this to take forever, but this is also not necessary
-          // sh "pkill -f http-server"
-          archiveArtifacts artifacts: "cypress/videos/**, cypress-visual-screenshots/**", fingerprint: true
+          archiveArtifacts artifacts: "test-results/**", fingerprint: true
         }
       }
 
