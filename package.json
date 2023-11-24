@@ -34,7 +34,7 @@
     "cypress-image-diff-js": "1.32.0",
     "eslint": "8.54.0",
     "eslint-config-prettier": "9.0.0",
-    "eslint-plugin-deprecation": "1.5.0",
+    "eslint-plugin-deprecation": "2.0.0",
     "eslint-plugin-prettier": "5.0.1",
     "eslint-plugin-react": "7.33.2",
     "http-server": "14.1.1",
