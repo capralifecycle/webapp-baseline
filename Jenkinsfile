@@ -51,14 +51,14 @@ buildConfig(
         try {
           sh "npm run test:component:ci"
         } finally {
-            archiveArtifacts artifacts: "test-results/**, snapshots/componentTesting/**", fingerprint: true
+            archiveArtifacts artifacts: "test-results/**", fingerprint: true
         }
       }
       stage("Test:E2E") {
         try {
           sh "npm run test:e2e:ci"
         } finally {
-            // archiveArtifacts artifacts: "test-results/**, snapshots/e2e/**", fingerprint: true
+            archiveArtifacts artifacts: "test-results/**", fingerprint: true
         }
       }
 

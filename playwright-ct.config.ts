@@ -4,8 +4,8 @@ import { defineConfig, devices } from "@playwright/experimental-ct-react";
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: "./tests/componentTesting",
-  snapshotDir: "./snapshots/componentTesting",
+  testDir: "./tests/components",
+  snapshotDir: "./snapshots/components",
   /* Maximum time one test can run for. */
   timeout: 10 * 1000,
   /* Run tests in files in parallel */
