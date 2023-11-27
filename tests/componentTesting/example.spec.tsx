@@ -4,6 +4,9 @@ import React from "react";
 import { BrowserRouter } from "react-router-dom";
 
 test.describe("WelcomeMessage", () => {
+
+  test.use({ viewport: { width: 1264, height: 195 } });
+
   test("should look similar as last time", async ({ mount }) => {
     const component = await mount(
       // <Link> crashes if not inside a <BrowserRouter>
