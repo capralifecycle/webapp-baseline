@@ -52,7 +52,7 @@ buildConfig(
           sh "npm run test:component:ci"
         } finally {
           if(fileExists("test-results")){
-            archiveArtifacts artifacts: "test-results/**,__snapshots__/**", fingerprint: true
+            archiveArtifacts artifacts: "test-results/*, __snapshots__/*", fingerprint: true
           }
         }
       }
@@ -61,7 +61,7 @@ buildConfig(
           sh "npm run test:e2e:ci"
         } finally {
           if(fileExists("test-results")){
-            archiveArtifacts artifacts: "test-results/**", fingerprint: true
+            archiveArtifacts artifacts: "test-results/*", fingerprint: true
           }
         }
       }
