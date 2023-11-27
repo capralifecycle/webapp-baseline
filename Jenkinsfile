@@ -28,7 +28,7 @@ buildConfig(
     checkout scm
 
     // Pass HOME to persist $HOME/.cache on executor for Cypress install.
-    insideToolImage("node:16", [insideArgs: "-e HOME"]) {
+    insideToolImage("node:18", [insideArgs: "-e HOME"]) {
       stage("Install dependencies") {
         sh "npm ci --legacy-peer-deps"
       }
