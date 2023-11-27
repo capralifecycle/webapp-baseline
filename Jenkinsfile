@@ -51,7 +51,7 @@ buildConfig(
         try {
           sh "npm run test:component"
         } finally {
-          archiveArtifacts artifacts: "test-results/** __snapshots__/**", fingerprint: true
+          archiveArtifacts artifacts: "test-results/**,__snapshots__/**", fingerprint: true
         }
       }
       stage("Test:E2E") {
