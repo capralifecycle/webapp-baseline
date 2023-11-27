@@ -41,19 +41,7 @@ buildConfig(
         sh "npm test"
       }
 
-      stage("Test with Ladle") {
-        try {
-
-          docker.image('mcr.microsoft.com/playwright:v1.37.0-jammy').inside {
-            sh "npm run test:e2e:ci"
-          }
-        } finally {
-          sh "mkdir -p test-results/ && touch test-results/hello"
-          archiveArtifacts artifacts: "test-results/**", fingerprint: true
-        }
-      }
-
-      stage("Test with Ladle") {
+      stage("Component testing") {
         try {
 
           docker.image('mcr.microsoft.com/playwright:v1.37.0-jammy').inside {
