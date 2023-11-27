@@ -6,5 +6,6 @@ test.describe("start page", () => {
     await expect(page).toHaveScreenshot({
       mask: [page.getByTestId("version-info")],
     });
+    
   });
 });

@@ -20,10 +20,12 @@
     "test:e2e:docker": "DOCKER=true playwright test",
     "test:e2e:docker:update-snapshots": "DOCKER=true playwright test --update-snapshots",
     "lint": "eslint src",
-    "lint:fix": "eslint --fix ."
+    "lint:fix": "eslint --fix .",
+    "test-ct": "playwright test -c playwright-ct.config.ts"
   },
   "devDependencies": {
     "@cypress/browserify-preprocessor": "3.0.2",
+    "@playwright/experimental-ct-react": "^1.40.0",
     "@playwright/test": "1.40.0",
     "@types/jest": "29.5.10",
     "@types/node": "20.10.0",

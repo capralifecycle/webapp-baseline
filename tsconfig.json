@@ -12,5 +12,13 @@
     "esModuleInterop": true,
     "resolveJsonModule": true
   },
-  "include": ["src", "*.js", "vite.config.ts", "playwright.config.ts", "e2e"],
+  "include": [
+    "src",
+    "*.js",
+    "vite.config.ts",
+    "playwright.config.ts",
+    "playwright-ct.config.ts",
+    "e2e",
+    "componentTesting"
+  ],
 }

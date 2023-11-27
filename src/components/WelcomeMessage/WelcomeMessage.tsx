@@ -1,19 +1,21 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
-import { getConfig } from "../../utils/config-utils";
+
 import styles from "./WelcomeMessage.module.css";
+import { getConfig } from "../../utils/config-utils";
 
 interface Props {
   appName?: string;
+  appBuildTime?: string;
+  commitHash?: string;
 }
 
 const WelcomeMessage: React.FC<Props> = ({
   appName = __BUILD_INFO__.appName,
+  appBuildTime = __BUILD_INFO__.appBuildTime,
+  commitHash = __BUILD_INFO__.commitHash,
 }) => {
   const config = getConfig();
-
-  const appBuildTime = __BUILD_INFO__.appBuildTime;
-  const commitHash = __BUILD_INFO__.commitHash;
 
   return (
     <div className={styles.container}>
