@@ -30,7 +30,7 @@ buildConfig(
     def img = docker.image("mcr.microsoft.com/playwright:v1.40.0-jammy")
     img.pull()
     
-    img.inside("-e AWS_CONTAINER_CREDENTIALS_RELATIVE_URI"){
+    img.inside("-e AWS_CONTAINER_CREDENTIALS_RELATIVE_URI -e HOME"){
       stage("Install dependencies") {
         sh "npm ci --legacy-peer-deps"
       }
@@ -62,6 +62,9 @@ buildConfig(
         }
       }
 
+    }
+    
+    insideToolImage("node:18-browsers", [insideArgs: "-e HOME"]){
       def s3Key
       stage("Upload to S3") {
         s3Key = uploadArtifactDirAsZip(
