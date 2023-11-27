@@ -19,9 +19,10 @@
     "test:e2e:ci": "CI=true playwright test ",
     "test:e2e:docker": "DOCKER=true playwright test",
     "test:e2e:docker:update-snapshots": "DOCKER=true playwright test --update-snapshots",
-    "test:component": "playwright test -c playwright-ct.config.ts",
-    "test:component:ci": "CI=true playwright test -c playwright-ct.config.ts",
-    "test:component:update-snapshots": "playwright test -c playwright-ct.config.ts --update-snapshots",
+    "playwright:clear-cache" : "rm -rf playwright/.cache",
+    "test:component": "npm run playwright:clear-cache && playwright test -c playwright-ct.config.ts",
+    "test:component:ci": "CI=true test:component",
+    "test:component:update-snapshots": "npm run playwright:clear-cache && playwright test -c playwright-ct.config.ts --update-snapshots",
     "lint": "eslint src",
     "lint:fix": "eslint --fix ."
   },

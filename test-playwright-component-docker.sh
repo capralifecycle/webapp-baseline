@@ -16,24 +16,22 @@ if [ "${1:-}" = "--update" ]; then
   shift
 fi
 
+
 docker_image=mcr.microsoft.com/playwright:v1.40.0-jammy
-
-docker pull "$docker_image"
-
 code=1
+
+if [ -d "playwright/.cache"]; then
+  rm -r playwright/.cache;
+fi
 
 # shellcheck disable=SC2086
 docker run \
   --rm \
   -it \
   -v "$PWD:/data" \
-  -e HOME \
-  -v "$HOME:$HOME" \
-  -u "$(id -u):$(id -g)" \
   -w /data \
-  --network host \
   "$docker_image" \
-  npm i && $cmd \
+   $cmd \
   || code=$?
 
 exit $code
