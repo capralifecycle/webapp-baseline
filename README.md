@@ -5,7 +5,7 @@ This project serves as a baseline when you wish to create a new webapp which is 
 - **React** for components
 - **Typescript** for type safety
 - **React-router** for routing
-- **Jest** for unit testing and **Cypress** for visual testing
+- **Jest** for unit testing and **Playwright** for visual testing
 - **Vite** for bundling
 - **Eslint** and **prettier** for linting
 - **Renovate** for automatic updates of dependencies
@@ -68,11 +68,11 @@ npm start
 
 ## Browser testing
 
-The project uses [Cypress](https://www.cypress.io/) for browser testing.
+The project uses [Playright](https://playwright.dev) for browser testing.
 
 Some of our Playwright tests verify screenshots. For this to work properly,
-fonts must be exactly the same on the machine running Cypress as in
-the CI environment. The script `test-cypress-docker.sh` simulates this:
+fonts must be exactly the same on the machine running Playwright as in
+the CI environment. The script `test-playwright-e2e-docker.sh` simulates this:
 
 ```bash
 ./test-playwright-docker.sh --update
