@@ -7,6 +7,7 @@ import { defineConfig, devices, PlaywrightTestConfig } from "@playwright/test";
 // require('dotenv').config();
 export const playwrightTestConfig: PlaywrightTestConfig = {
   testDir: "./tests/e2e",
+  snapshotDir: "./snapshots/e2e",
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
