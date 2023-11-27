@@ -34,11 +34,7 @@ docker run \
   -it \
   -v "$PWD:/data" \
   -e "DOCKER_BASE_URL=$base_url" \
-  -e HOME \
-  -v "$HOME:$HOME" \
-  -u "$(id -u):$(id -g)" \
   -w /data \
-  --network host \
   "$docker_image" \
   $cmd \
   || code=$?
