@@ -47,6 +47,13 @@ buildConfig(
       stage("Test:Unit"){
         sh "npm run test"
       }
+      stage("Test:Component") {
+        try {
+          sh "npm run test:component"
+        } finally {
+          archiveArtifacts artifacts: "test-results/**", fingerprint: true
+        }
+      }
       stage("Test:E2E") {
         try {
           sh "npm run test:e2e:ci"

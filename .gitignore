@@ -5,6 +5,7 @@ build/
 *.log
 /coverage/
 /test-report.xml
+/test-results/
 
 
 # For cypress-image-diff-js -plugin
