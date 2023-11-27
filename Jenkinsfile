@@ -44,7 +44,7 @@ buildConfig(
       stage("Component testing") {
         try {
 
-          docker.image('mcr.microsoft.com/playwright:v1.37.0-jammy').inside {
+          docker.image('mcr.microsoft.com/playwright:v1.40.0-jammy').inside {
             sh "npm run test:component:ci"
           }
         } finally {
