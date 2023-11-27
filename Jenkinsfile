@@ -27,10 +27,8 @@ buildConfig(
   dockerNode {
     checkout scm
 
-    def img = docker.image("mcr.microsoft.com/playwright:v1.40.0-jammy")
-    img.pull()
-    
-    img.inside("-e AWS_CONTAINER_CREDENTIALS_RELATIVE_URI -e HOME"){
+    // Pass HOME to persist $HOME/.cache on executor for Cypress install.
+    insideToolImage("node:16", [insideArgs: "-e HOME"]) {
       stage("Install dependencies") {
         sh "npm ci --legacy-peer-deps"
       }
@@ -39,32 +37,56 @@ buildConfig(
         sh "npm run lint"
       }
 
+      stage("Test:UNIT") {
+        sh "npm test"
+      }
+
+      stage("Test with Ladle") {
+        try {
+
+          docker.image('mcr.microsoft.com/playwright:v1.37.0-jammy').inside {
+            sh "npm run test:e2e:ci"
+          }
+        } finally {
+          sh "mkdir -p test-results/ && touch test-results/hello"
+          archiveArtifacts artifacts: "test-results/**", fingerprint: true
+        }
+      }
+
+      stage("Test with Ladle") {
+        try {
+
+          docker.image('mcr.microsoft.com/playwright:v1.37.0-jammy').inside {
+            sh "npm run test:component:ci"
+          }
+        } finally {
+          sh "mkdir -p test-results/ && touch test-results/hello"
+          archiveArtifacts artifacts: "test-results/**", fingerprint: true
+        }
+      }
+
       stage("Generate build") {
         sh "npm run build:ci"
         stash name: 'build', includes: 'build/**'
       }
 
-      stage("Test:Unit"){
-        sh "npm run test"
-      }
-      stage("Test:Component") {
-        try {
-          sh "npm run test:component:ci"
-        } finally {
-            archiveArtifacts artifacts: "test-results/**, snapshots/componentTesting/**", fingerprint: true
-        }
-      }
-      stage("Test:E2E") {
-        try {
-          sh "npm run test:e2e:ci"
-        } finally {
-            // archiveArtifacts artifacts: "test-results/**, snapshots/e2e/**", fingerprint: true
-        }
+      stage("Archive artifacts and stats") {
+        sh "./scripts/generate-size-reports.sh"
+        archiveWebpackStatsAndReports()
       }
 
-    }
-    
-    insideToolImage("node:18-browsers", [insideArgs: "-e HOME"]){
+      //stage("Test:Cypress") {
+      //  try {
+      //    sh "npm run preview &"
+      //    sh "./node_modules/.bin/wait-on http-get://localhost:3000"
+      //    sh "npm run test:cypress"
+      //  } finally {
+      //    // bug causes this to take forever, but this is also not necessary
+      //    // sh "pkill -f http-server"
+      //    archiveArtifacts artifacts: "cypress/videos/**, cypress-visual-screenshots/**", fingerprint: true
+      //  }
+      //}
+
       def s3Key
       stage("Upload to S3") {
         s3Key = uploadArtifactDirAsZip(
