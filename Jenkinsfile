@@ -49,16 +49,20 @@ buildConfig(
       }
       stage("Test:Component") {
         try {
-          sh "npm run test:component"
+          sh "npm run test:component:ci"
         } finally {
-          archiveArtifacts artifacts: "test-results/**,__snapshots__/**", fingerprint: true
+          if(fileExists("test-results")){
+            archiveArtifacts artifacts: "test-results/**,__snapshots__/**", fingerprint: true
+          }
         }
       }
       stage("Test:E2E") {
         try {
           sh "npm run test:e2e:ci"
         } finally {
-          archiveArtifacts artifacts: "test-results/**", fingerprint: true
+          if(fileExists("test-results")){
+            archiveArtifacts artifacts: "test-results/**", fingerprint: true
+          }
         }
       }
 
