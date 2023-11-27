@@ -50,19 +50,15 @@ buildConfig(
       stage("Test:Component") {
         try {
           sh "npm run test:component:ci"
-        } finally {
-          if(fileExists("test-results")){
+        } catch {
             archiveArtifacts artifacts: "test-results/**, __snapshots__/**", fingerprint: true
-          }
         }
       }
       stage("Test:E2E") {
         try {
           sh "npm run test:e2e:ci"
-        } finally {
-          if(fileExists("test-results")){
+        } catch {
             archiveArtifacts artifacts: "test-results/**", fingerprint: true
-          }
         }
       }
 
