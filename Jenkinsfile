@@ -50,14 +50,14 @@ buildConfig(
       stage("Test:Component") {
         try {
           sh "npm run test:component:ci"
-        } finally {
+        } catch(Exception e) {
             archiveArtifacts artifacts: "test-results/**", fingerprint: true
         }
       }
       stage("Test:E2E") {
         try {
           sh "npm run test:e2e:ci"
-        } finally {
+        } catch(Exception e) {
             archiveArtifacts artifacts: "test-results/**", fingerprint: true
         }
       }
