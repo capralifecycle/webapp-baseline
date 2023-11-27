@@ -14,11 +14,7 @@
   },
   "include": [
     "src",
-    "*.js",
+    "tests",
     "vite.config.ts",
-    "playwright.config.ts",
-    "playwright-ct.config.ts",
-    "e2e",
-    "componentTesting"
   ],
 }
