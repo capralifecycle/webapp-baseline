@@ -16,6 +16,12 @@ if [ "${1:-}" = "--update" ]; then
   shift
 fi
 
+if [[ $(uname -a) == Linux* ]]; then
+  base_url=http://localhost:3000
+else
+  base_url=http://host.docker.internal:3000
+fi
+
 docker_image=mcr.microsoft.com/playwright:v1.40.0-jammy
 
 docker pull "$docker_image"
@@ -27,6 +33,7 @@ docker run \
   --rm \
   -it \
   -v "$PWD:/data" \
+  -e "DOCKER_BASE_URL=$base_url" \
   -e HOME \
   -v "$HOME:$HOME" \
   -u "$(id -u):$(id -g)" \
