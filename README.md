@@ -33,22 +33,22 @@ any failure situations.
    npm run lint
    ```
 
-1. Test
+2. Test
 
    ```bash
    npm run test
    ```
 
-1. Build
+3. Build
 
    ```bash
    npm run build
    ```
 
-1. Run Cypress tests (see separate section for more details)
+4. Run Playwright tests (see separate section for more details)
 
    ```bash
-   ./test-cypress-docker.sh
+   ./test-playwright-docker.sh
    ```
 
 ### Running webapp locally
@@ -70,12 +70,12 @@ npm start
 
 The project uses [Cypress](https://www.cypress.io/) for browser testing.
 
-Some of our Cypress tests verify screenshots. For this to work properly,
+Some of our Playwright tests verify screenshots. For this to work properly,
 fonts must be exactly the same on the machine running Cypress as in
 the CI environment. The script `test-cypress-docker.sh` simulates this:
 
 ```bash
-./test-cypress-docker.sh --update
+./test-playwright-docker.sh --update
 ```
 
 The `--update` argument will cause failing image snapshots to be replaced.
@@ -84,27 +84,7 @@ Inspect the updated snapshot before commiting it.
 To run tests in interactive mode (opens a browser window):
 
 ```bash
-npm run test:cypress:open
-```
-
-### Measure build performance
-
-If the build process seems to be slower than it should you can run the
-following command to analyze where bottlenecks might occur.
-
-```bash
-npm run build:measure
-```
-
-### Analyzing bundle size
-
-Performance budget has been enabled for the application. If you get
-warnings about bundle size when building you have exceeded the build
-size set by the budget. Consider use of code splitting or analyze
-your bundle with the following command
-
-```bash
-make analyze
+npm run test:e2e:ui
 ```
 
 ## Deployment

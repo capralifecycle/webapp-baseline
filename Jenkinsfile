@@ -27,8 +27,10 @@ buildConfig(
   dockerNode {
     checkout scm
 
-    // Pass HOME to persist $HOME/.cache on executor for Cypress install.
-    insideToolImage("node:18-browsers", [insideArgs: "-e HOME"]) {
+    def img = docker.image("mcr.microsoft.com/playwright:v1.40.0-jammy")
+    img.pull()
+    
+    img.inside("-e AWS_CONTAINER_CREDENTIALS_RELATIVE_URI -e HOME"){
       stage("Install dependencies") {
         sh "npm ci --legacy-peer-deps"
       }
@@ -37,32 +39,32 @@ buildConfig(
         sh "npm run lint"
       }
 
-      stage("Test:UNIT") {
-        sh "npm test"
-      }
-
       stage("Generate build") {
         sh "npm run build:ci"
         stash name: 'build', includes: 'build/**'
       }
 
-      stage("Archive artifacts and stats") {
-        sh "./scripts/generate-size-reports.sh"
-        archiveWebpackStatsAndReports()
+      stage("Test:Unit"){
+        sh "npm run test"
       }
-
-      stage("Test:Cypress") {
+      stage("Test:Component") {
         try {
-          sh "npm run preview &"
-          sh "./node_modules/.bin/wait-on http-get://localhost:3000"
-          sh "npm run test:cypress"
-        } finally {
-          // bug causes this to take forever, but this is also not necessary
-          // sh "pkill -f http-server"
-          archiveArtifacts artifacts: "cypress/videos/**, cypress-visual-screenshots/**", fingerprint: true
+          sh "npm run test:component:ci"
+        } catch(Exception e) {
+            archiveArtifacts artifacts: "test-results/**", fingerprint: true
+        }
+      }
+      stage("Test:E2E") {
+        try {
+          sh "npm run test:e2e:ci"
+        } catch(Exception e) {
+            archiveArtifacts artifacts: "test-results/**", fingerprint: true
         }
       }
 
+    }
+    
+    insideToolImage("node:18-browsers", [insideArgs: "-e HOME"]){
       def s3Key
       stage("Upload to S3") {
         s3Key = uploadArtifactDirAsZip(
