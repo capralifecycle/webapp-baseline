@@ -20,8 +20,8 @@ fi
 docker_image=mcr.microsoft.com/playwright:v1.40.0-jammy
 code=1
 
-if [ -d "playwright/.cache"]; then
-  rm -r playwright/.cache;
+if [ -d "playwright/.cache" ] ; then
+  rm -rf playwright/.cache;
 fi
 
 # shellcheck disable=SC2086

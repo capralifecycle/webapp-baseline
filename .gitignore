@@ -13,10 +13,7 @@ build/
 /cypress-visual-screenshots/comparison
 /cypress-visual-screenshots/diff
 
-/playwright-report/
 /blob-report/
-/playwright/.cache/
 /test-results/
-/playwright-report/
-/blob-report/
 /playwright/.cache/
+/playwright-report/

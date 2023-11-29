@@ -21,6 +21,7 @@
     "test:e2e:docker:update-snapshots": "DOCKER=true playwright test --update-snapshots",
     "playwright:clear-cache" : "rm -rf playwright/.cache",
     "test:component": "npm run playwright:clear-cache && playwright test -c playwright-ct.config.ts",
+    "posttest:component": "npm run playwright:clear-cache",
     "test:component:ci": "CI=true npm run test:component",
     "test:component:update-snapshots": "npm run playwright:clear-cache && playwright test -c playwright-ct.config.ts --update-snapshots",
     "lint": "eslint src",
