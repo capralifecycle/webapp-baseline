@@ -1,4 +1,8 @@
-import { Environment, getEnvironment, getConfig } from "./config-utils";
+import {
+  Environment,
+  getEnvironment,
+  getConfig,
+} from "../../src/utils/config-utils";
 import { describe, test, expect } from "vitest";
 
 describe("getEnvironment", () => {
