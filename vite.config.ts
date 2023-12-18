@@ -23,12 +23,10 @@ export default (env: { mode?: string }) => {
         overlay: { initialIsOpen: false },
       }),
     ],
-    css:{
-      postcss:{
-        plugins:[
-          autoprefixer({})
-        ]
-      }
+    css: {
+      postcss: {
+        plugins: [autoprefixer({})],
+      },
     },
     define: {
       __BUILD_INFO__: JSON.stringify({
@@ -55,8 +53,17 @@ export default (env: { mode?: string }) => {
     },
     test: {
       coverage: {
-        provider: 'istanbul'
+        provider: "istanbul",
       },
+      exclude: [
+        "**/node_modules/**",
+        "**/dist/**",
+        "**/cypress/**",
+        "**/.{idea,git,cache,output,temp}/**",
+        "**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build}.config.*",
+        "tests/components/*",
+        "tests/e2e/*",
+      ],
     },
   });
 };
