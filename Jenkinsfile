@@ -27,7 +27,7 @@ buildConfig(
   dockerNode {
     checkout scm
 
-    def img = docker.image("mcr.microsoft.com/playwright:v1.40.0-jammy")
+    def img = docker.image("mcr.microsoft.com/playwright:v1.41.2-jammy")
     img.pull()
     
     img.inside("-e AWS_CONTAINER_CREDENTIALS_RELATIVE_URI -e HOME"){
