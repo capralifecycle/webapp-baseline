@@ -10,14 +10,14 @@ set -eu
 #
 # Some more work is needed to make it cross-platform.
 
-cmd="npm run test:component"
+cmd="npm run test:component:docker"
 if [ "${1:-}" = "--update" ]; then
   cmd="$cmd:update-snapshots"
   shift
 fi
 
-
-docker_image=mcr.microsoft.com/playwright:v1.40.0-jammy
+playwrightVersion=$(cat package.json | jq -r '.devDependencies."@playwright/experimental-ct-react"')
+docker_image=mcr.microsoft.com/playwright:v$playwrightVersion-jammy
 code=1
 
 if [ -d "playwright/.cache" ] ; then

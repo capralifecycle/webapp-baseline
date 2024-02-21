@@ -22,7 +22,8 @@ else
   base_url=http://host.docker.internal:3000
 fi
 
-docker_image=mcr.microsoft.com/playwright:v1.40.0-jammy
+playwrightVersion=$(cat package.json | jq -r '.devDependencies."@playwright/test"')
+docker_image=mcr.microsoft.com/playwright:v$playwrightVersion-jammy
 
 docker pull "$docker_image"
 
