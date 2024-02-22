@@ -1,23 +1,50 @@
-
 {
+  /* Based on https://www.totaltypescript.com/tsconfig-cheat-sheet */
   "compilerOptions": {
-    "sourceMap": true,
-    "strict": true,
-    "module": "ESNext",
-    "jsx": "react",
-    "target": "ESNext",
-    "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "skipLibCheck": true,
-    "moduleResolution": "node",
     "esModuleInterop": true,
-    "resolveJsonModule": true
+    "skipLibCheck": true,
+    "target": "ES2022",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "lib": [
+      "ES2022",
+      "DOM",
+      "DOM.Iterable"
+    ],
+    "jsx": "react-jsx",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "noImplicitAny": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "#/*": [
+        "src/*"
+      ]
+    }
   },
   "include": [
-    "src",
-    "tests",
+    "src/**/*",
+    "tests/**/*",
+    "scripts/**/*",
     "vite.config.ts",
     "playwright.config.ts",
     "playwright-ct.config.ts",
-    "playwright"
+    "playwright",
   ],
+  "references": [
+    {
+      "path": "./tsconfig.vite.json"
+    }
+  ],
+  "ts-node": {
+    "compilerOptions": {
+      "module": "ESNext",
+      "moduleResolution": "Node"
+    }
+  }
 }

@@ -4,8 +4,10 @@ build/
 .DS_Store
 *.log
 /coverage/
-/test-report.xml
+.idea/
 
+/test-report.xml
+/public/version.txt
 
 
 # For cypress-image-diff-js -plugin

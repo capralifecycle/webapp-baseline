@@ -4,15 +4,15 @@ import fs from "fs";
 import path from "path";
 import { defineConfig } from "vite";
 import packageJson from "./package.json";
-import checker from "vite-plugin-checker";
 import * as child from "child_process";
-import autoprefixer from "autoprefixer";
-
-const inDocker = fs.existsSync("/.dockerenv");
+import { execSync } from "child_process";
+import checker from "vite-plugin-checker"
 
 export default (env: { mode?: string }) => {
+  const inDocker = fs.existsSync("/.dockerenv");
   const isProd = env.mode === "production";
-  const commitHash = child.execSync("git rev-parse --short HEAD").toString();
+  const commitHash = child.execSync("git rev-parse --short HEAD").toString().trim();
+  execSync(`echo ${commitHash} > public/version.txt`)
 
   return defineConfig({
     plugins: [
@@ -20,14 +20,12 @@ export default (env: { mode?: string }) => {
       checker({
         typescript: true,
         eslint: { lintCommand: "eslint src" },
-        overlay: { initialIsOpen: false },
+        overlay: {
+          initialIsOpen: false,
+        }
       }),
     ],
-    css: {
-      postcss: {
-        plugins: [autoprefixer({})],
-      },
-    },
+    publicDir: '/public',
     define: {
       __BUILD_INFO__: JSON.stringify({
         appName: packageJson.name,
@@ -35,7 +33,7 @@ export default (env: { mode?: string }) => {
         appVersion: `${new Date()
           .toISOString()
           .split("T")[0]
-          .replace(/-/g, "")}-${commitHash}`,
+          ?.replace(/-/g, "")}-${commitHash}`,
         commitHash,
       }),
     },
@@ -58,11 +56,15 @@ export default (env: { mode?: string }) => {
       exclude: [
         "**/node_modules/**",
         "**/dist/**",
-        "**/cypress/**",
         "**/.{idea,git,cache,output,temp}/**",
-        "**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build}.config.*",
+        "**/{vite,vitest,build}.config.*",
         "tests/components/*",
         "tests/e2e/*",
+      ],
+    },
+    resolve: {
+      alias: [
+        {find: '#', replacement: '/src'},
       ],
     },
   });

@@ -28,6 +28,7 @@ fi
 docker run \
   --rm \
   -it \
+  -v "/data/node_modules" \
   -v "$PWD:/data" \
   -w /data \
   "$docker_image" \

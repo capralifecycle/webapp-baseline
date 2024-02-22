@@ -7,7 +7,7 @@ export default defineConfig({
   testDir: "./tests/components",
   snapshotDir: "./snapshots/components",
   /* Maximum time one test can run for. */
-  timeout: 10 * 1000,
+  timeout: 10_000,
   /* Run tests in files in parallel */
   fullyParallel: true,
   /* Fail the build on CI if you accidentally left test.only in the source code. */
@@ -25,6 +25,11 @@ export default defineConfig({
 
     /* Port to use for Playwright component endpoint. */
     ctPort: 3100,
+    ctViteConfig: {
+      resolve: {
+        alias: [{ find: "#", replacement: "/src" }],
+      },
+    },
   },
 
   /* Configure projects for major browsers */

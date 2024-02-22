@@ -1,6 +1,5 @@
 import { test, expect } from "@playwright/experimental-ct-react";
-import WelcomeMessage from "../../src/components/WelcomeMessage";
-import React from "react";
+import WelcomeMessage from "../../src/components/WelcomeMessage/WelcomeMessage";
 import { BrowserRouter } from "react-router-dom";
 
 test.describe("WelcomeMessage", () => {

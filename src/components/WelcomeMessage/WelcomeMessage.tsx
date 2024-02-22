@@ -1,29 +1,32 @@
-import * as React from "react";
 import { Link } from "react-router-dom";
-
 import styles from "./WelcomeMessage.module.css";
-import { getConfig } from "../../utils/config-utils";
+import { getConfig } from "#/utils/config-utils";
 
-interface Props {
+type Props = {
   appName?: string;
   appBuildTime?: string;
   commitHash?: string;
-}
+};
 
-const WelcomeMessage: React.FC<Props> = ({
-  appName = __BUILD_INFO__.appName,
-  appBuildTime = __BUILD_INFO__.appBuildTime,
-  commitHash = __BUILD_INFO__.commitHash,
-}) => {
+export default function WelcomeMessage({
+  appName,
+  appBuildTime,
+  commitHash,
+}: Props) {
   const config = getConfig();
 
   return (
     <div className={styles.container}>
       <h1 id="welcome-message">
-        Welcome to <span className={styles.highlight}>{appName}</span>.
+        Welcome to{" "}
+        <span className={styles.highlight}>
+          {appName ?? __BUILD_INFO__.appName}
+        </span>
+        .
       </h1>
       <p data-testid="version-info">
-        Built {appBuildTime} from commit {commitHash} and is running in{" "}
+        Built {appBuildTime ?? __BUILD_INFO__.appBuildTime} from commit{" "}
+        {commitHash ?? __BUILD_INFO__.commitHash} and is running in{" "}
         {config.environment}
       </p>
       <p>
@@ -31,6 +34,4 @@ const WelcomeMessage: React.FC<Props> = ({
       </p>
     </div>
   );
-};
-
-export default WelcomeMessage;
+}
