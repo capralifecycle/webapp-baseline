@@ -28,9 +28,9 @@
     }
   },
   "include": [
-    "src/**/*",
-    "tests/**/*",
-    "scripts/**/*",
+    "src",
+    "tests",
+    "scripts",
     "vite.config.ts",
     "playwright.config.ts",
     "playwright-ct.config.ts",

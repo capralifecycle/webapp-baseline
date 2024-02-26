@@ -6,13 +6,13 @@ import { defineConfig } from "vite";
 import packageJson from "./package.json";
 import * as child from "child_process";
 import { execSync } from "child_process";
-import checker from "vite-plugin-checker"
+import checker from "vite-plugin-checker";
 
 export default (env: { mode?: string }) => {
   const inDocker = fs.existsSync("/.dockerenv");
   const isProd = env.mode === "production";
   const commitHash = child.execSync("git rev-parse --short HEAD").toString().trim();
-  execSync(`echo ${commitHash} > public/version.txt`)
+  execSync(`echo ${commitHash} > public/version.txt`);
 
   return defineConfig({
     plugins: [
@@ -22,10 +22,10 @@ export default (env: { mode?: string }) => {
         eslint: { lintCommand: "eslint src" },
         overlay: {
           initialIsOpen: false,
-        }
+        },
       }),
     ],
-    publicDir: '/public',
+    publicDir: "/public",
     define: {
       __BUILD_INFO__: JSON.stringify({
         appName: packageJson.name,
@@ -64,7 +64,7 @@ export default (env: { mode?: string }) => {
     },
     resolve: {
       alias: [
-        {find: '#', replacement: '/src'},
+        { find: "#", replacement: "/src" },
       ],
     },
   });
