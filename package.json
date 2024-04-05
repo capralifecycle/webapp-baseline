@@ -31,7 +31,7 @@
   "devDependencies": {
     "@playwright/experimental-ct-react": "1.42.1",
     "@playwright/test": "1.42.1",
-    "@types/node": "20.12.2",
+    "@types/node": "20.12.3",
     "@types/react": "18.2.73",
     "@types/react-dom": "18.2.23",
     "@types/react-router-dom": "5.3.3",
