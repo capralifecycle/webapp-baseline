@@ -31,7 +31,6 @@
     "src",
     "tests",
     "scripts",
-    "vite.config.ts",
     "playwright.config.ts",
     "playwright-ct.config.ts",
     "playwright",
