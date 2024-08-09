@@ -3,8 +3,8 @@ import WelcomeMessage from "../../src/components/WelcomeMessage/WelcomeMessage";
 import { BrowserRouter } from "react-router-dom";
 
 test.describe("WelcomeMessage", () => {
-  test("should look similar as last time", async ({ mount }) => {
-    const component = await mount(
+  test("should look similar as last time", async (body) => {
+    const component = await body.mount(
       // <Link> crashes if not inside a <BrowserRouter>
       <BrowserRouter>
         <WelcomeMessage

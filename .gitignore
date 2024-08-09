@@ -5,6 +5,7 @@ build/
 *.log
 /coverage/
 .idea/
+.vscode/
 
 /test-report.xml
 /public/version.txt

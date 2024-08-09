@@ -21,11 +21,11 @@ export default (env: { mode?: string }) => {
         typescript: true,
         eslint: { lintCommand: "eslint src" },
         overlay: {
-          initialIsOpen: false,
+          initialIsOpen: true,
         },
       }),
     ],
-    publicDir: "/public",
+    publicDir: "./public",
     define: {
       __BUILD_INFO__: JSON.stringify({
         appName: packageJson.name,
