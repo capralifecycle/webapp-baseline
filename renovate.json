@@ -1,5 +1,12 @@
 {
   "extends": ["github>capraconsulting/renovate-config:default"],
   "automerge": true,
-  "automergeType": "branch"
+  "automergeType": "branch",
+  "packageRules": [
+    {
+      "matchPackageNames": ["eslint"],
+      "allowedVersions": "<=9.0.0",
+      "enabled": false
+    }
+  ]
 }
