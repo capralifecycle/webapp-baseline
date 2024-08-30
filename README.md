@@ -10,7 +10,7 @@ This project serves as a baseline when you wish to create a new webapp which is 
 - **Playwright** for e2e and visual testing
 - **Eslint** and **prettier** for linting
 - **Renovate** for automatic updates of dependencies
-- **Jenkins** for building and testing application for CI
+- **GitHub Actions** for building and testing application in CI
 
 ## Checklist if using this baseline as a template
 
