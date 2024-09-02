@@ -1,4 +1,4 @@
-import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import WelcomeMessage from '#/components/WelcomeMessage/WelcomeMessage'
 import AboutMessage from '#/components/AboutMessage'
 

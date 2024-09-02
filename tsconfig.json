@@ -31,6 +31,7 @@
     "src",
     "tests",
     "scripts",
+    "eslint.config.js",
     "playwright.config.ts",
     "playwright-ct.config.ts",
     "playwright",

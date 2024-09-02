@@ -5,6 +5,6 @@ declare const __BUILD_INFO__: {
 }
 
 declare module '*.module.css' {
-  const classes: {[key: string]: string}
+  const classes: { [key: string]: string }
   export default classes
 }

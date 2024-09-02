@@ -1,4 +1,4 @@
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 export default function AboutMessage() {
   return (
@@ -8,7 +8,8 @@ export default function AboutMessage() {
         <Link to={'/'}>Back</Link>
       </p>
       <p>
-        GitHub repository:{' '}
+        GitHub repository:
+        {' '}
         <a href={'https://github.com/capraconsulting/webapp-baseline'}>
           https://github.com/capraconsulting/webapp-baseline
         </a>

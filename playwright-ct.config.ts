@@ -1,4 +1,4 @@
-import {defineConfig, devices} from '@playwright/experimental-ct-react'
+import { defineConfig, devices } from '@playwright/experimental-ct-react'
 
 /**
  * See https://playwright.dev/docs/test-configuration.
@@ -27,7 +27,7 @@ export default defineConfig({
     ctPort: 3100,
     ctViteConfig: {
       resolve: {
-        alias: [{find: '#', replacement: '/src'}],
+        alias: [{ find: '#', replacement: '/src' }],
       },
     },
   },
@@ -36,15 +36,15 @@ export default defineConfig({
   projects: [
     {
       name: 'chromium',
-      use: {...devices['Desktop Chrome']},
+      use: { ...devices['Desktop Chrome'] },
     },
     {
       name: 'firefox',
-      use: {...devices['Desktop Firefox']},
+      use: { ...devices['Desktop Firefox'] },
     },
     {
       name: 'webkit',
-      use: {...devices['Desktop Safari']},
+      use: { ...devices['Desktop Safari'] },
     },
   ],
 })
