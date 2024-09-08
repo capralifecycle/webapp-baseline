@@ -35,8 +35,8 @@
   },
   "devDependencies": {
     "@eslint/js": "9.9.1",
-    "@playwright/experimental-ct-react": "1.46.1",
-    "@playwright/test": "1.46.1",
+    "@playwright/experimental-ct-react": "1.47.0",
+    "@playwright/test": "1.47.0",
     "@stylistic/eslint-plugin": "2.7.2",
     "@types/eslint__js": "8.42.3",
     "@types/node": "22.5.4",
