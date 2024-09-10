@@ -2,10 +2,10 @@
 import react from '@vitejs/plugin-react'
 import fs from 'fs'
 import path from 'path'
-import { defineConfig } from 'vite'
+import {defineConfig} from 'vite'
 import packageJson from './package.json'
 import * as child from 'child_process'
-import { execSync } from 'child_process'
+import {execSync} from 'child_process'
 import checker from 'vite-plugin-checker'
 
 type Env = {
@@ -76,7 +76,7 @@ export default (env: Env) => {
       ],
     },
     resolve: {
-      alias: [{ find: '#', replacement: '/src' }],
+      alias: [{find: '~', replacement: '/src'}],
     },
   })
 }

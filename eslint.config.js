@@ -1,7 +1,7 @@
 import eslint from '@eslint/js'
 import tseslint from 'typescript-eslint'
 import reactPlugin from 'eslint-plugin-react'
-import stylistic from '@stylistic/eslint-plugin'
+import prettierPluginRecommended from 'eslint-plugin-prettier/recommended'
 
 export default tseslint.config(
   {
@@ -18,8 +18,9 @@ export default tseslint.config(
     extends: [
       eslint.configs.recommended,
       ...tseslint.configs.recommended,
-      stylistic.configs['recommended-flat'],
       reactPlugin.configs.flat.recommended,
+      // Must be last to override other rules
+      prettierPluginRecommended,
     ],
     settings: {
       react: {
@@ -49,15 +50,6 @@ export default tseslint.config(
       ],
       'react/jsx-fragments': ['error', 'syntax'],
       'react/jsx-no-useless-fragment': 'error',
-
-      // Code style specific rules
-      '@stylistic/jsx-curly-brace-presence': [
-        'error', {
-          props: 'always',
-          children: 'never',
-        },
-      ],
-      '@stylistic/function-call-spacing': ['error', 'never'],
     },
   },
 )

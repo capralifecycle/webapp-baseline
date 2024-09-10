@@ -1,5 +1,5 @@
-import { Environment, getEnvironment, getConfig } from '#/utils/config-utils'
-import { describe, test, expect } from 'vitest'
+import {Environment, getEnvironment, getConfig} from '~/utils/config-utils'
+import {describe, test, expect} from 'vitest'
 
 describe('getEnvironment', () => {
   test.each`
@@ -12,7 +12,7 @@ describe('getEnvironment', () => {
     ${'https://www.staging.example.no'} | ${Environment.STAGING}
     ${'https://example.com'}            | ${Environment.PROD}
     ${'https://www.example.com'}        | ${Environment.PROD}
-  `('should return $expectedResult for $value', ({ expectedResult, value }) => {
+  `('should return $expectedResult for $value', ({expectedResult, value}) => {
     expect(getEnvironment(value)).toEqual(expectedResult)
   })
 })

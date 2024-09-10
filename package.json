@@ -47,6 +47,8 @@
     "@vitest/coverage-istanbul": "2.0.5",
     "eslint": "9.10.0",
     "eslint-plugin-react": "7.35.2",
+    "eslint-config-prettier": "9.1.0",
+    "eslint-plugin-prettier": "5.2.1",
     "prettier": "3.3.3",
     "typescript": "5.5.4",
     "typescript-eslint": "8.4.0",
@@ -63,5 +65,12 @@
       "last 2 firefox version",
       "last 2 safari version"
     ]
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "singleQuote": true,
+    "semi": false,
+    "bracketSpacing": false,
+    "arrowParens": "always"
   }
 }

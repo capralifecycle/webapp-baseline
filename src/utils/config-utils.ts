@@ -37,11 +37,9 @@ const envToConfigMap: EnvToConfigMap = {
 export function getEnvironment(origin: string): Environment {
   if (/^https:\/\/(www\.){0,1}dev/.test(origin)) {
     return Environment.DEV
-  }
-  else if (/^https:\/\/(www\.){0,1}staging/.test(origin)) {
+  } else if (/^https:\/\/(www\.){0,1}staging/.test(origin)) {
     return Environment.STAGING
-  }
-  else if (/^https:\/\//.test(origin)) {
+  } else if (/^https:\/\//.test(origin)) {
     return Environment.PROD
   }
 

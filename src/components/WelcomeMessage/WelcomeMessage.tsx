@@ -1,6 +1,6 @@
-import { Link } from 'react-router-dom'
+import {Link} from 'react-router-dom'
 import styles from './WelcomeMessage.module.css'
-import { getConfig } from '../../utils/config-utils'
+import {getConfig} from '~/utils/config-utils'
 
 type Props = {
   appName?: string
@@ -18,27 +18,14 @@ export default function WelcomeMessage({
   return (
     <div className={styles.container}>
       <h1>
-        Welcome to
-        {' '}
+        Welcome to{' '}
         <span className={styles.highlight}>
           {appName ?? __BUILD_INFO__.appName}
         </span>
       </h1>
-      <p
-        id={'build-info'}
-        className={'subtitle'}
-        title={'test'}
-      >
-        Built
-        {' '}
-        {appBuildTime ?? __BUILD_INFO__.appBuildTime}
-        {' '}
-        from commit
-        {' '}
-        {commitHash ?? __BUILD_INFO__.commitHash}
-        {' '}
-        and is running in
-        {' '}
+      <p id={'build-info'} className={'subtitle'} title={'test'}>
+        Built {appBuildTime ?? __BUILD_INFO__.appBuildTime} from commit{' '}
+        {commitHash ?? __BUILD_INFO__.commitHash} and is running in{' '}
         {config.environment}
       </p>
       <p>

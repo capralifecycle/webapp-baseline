@@ -1,6 +1,6 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom'
-import WelcomeMessage from '#/components/WelcomeMessage/WelcomeMessage'
-import AboutMessage from '#/components/AboutMessage'
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
+import WelcomeMessage from '~/components/WelcomeMessage/WelcomeMessage'
+import AboutMessage from '~/components/AboutMessage'
 
 export default function App() {
   return (
