@@ -40,6 +40,7 @@ export default tseslint.config(
       ],
 
       // React specific rules
+      'react/prop-types': 'off',
       'react/react-in-jsx-scope': 'off',
       'react/function-component-definition': [
         'error',
@@ -50,6 +51,13 @@ export default tseslint.config(
       ],
       'react/jsx-fragments': ['error', 'syntax'],
       'react/jsx-no-useless-fragment': 'error',
+      'react/jsx-curly-brace-presence': [
+        'error',
+        {props: 'always', children: 'never'},
+      ],
+
+      // Prettier
+      'prettier/prettier': 'warn',
     },
   },
 )
