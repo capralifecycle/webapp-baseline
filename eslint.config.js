@@ -38,6 +38,7 @@ export default tseslint.config(
           ignoreRestSiblings: true,
         },
       ],
+      '@typescript-eslint/no-explicit-any': 'off',
 
       // React specific rules
       'react/prop-types': 'off',
