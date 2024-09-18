@@ -1,5 +1,5 @@
-import {Environment, getEnvironment, getConfig} from '~/utils/config-utils'
-import {describe, test, expect} from 'vitest'
+import {Environment, getConfig, getEnvironment} from '~/utils/config-utils'
+import {describe, expect, test} from 'vitest'
 
 describe('getEnvironment', () => {
   test.each`

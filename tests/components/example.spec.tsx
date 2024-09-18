@@ -1,4 +1,4 @@
-import {test, expect} from '@playwright/experimental-ct-react'
+import {expect, test} from '@playwright/experimental-ct-react'
 import WelcomeMessage from '~/components/WelcomeMessage/WelcomeMessage'
 import {BrowserRouter} from 'react-router-dom'
 
