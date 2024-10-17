@@ -31,9 +31,9 @@ jobs:
     steps:
       - uses: actions/checkout@eef61447b9ff4aafe5dcd4e0bbf5d482be7e7871 # v4.2.1
 
-      - uses: capralifecycle/actions-lib/check-runtime-dependencies@f3dcdbe2cd85725311b4ff5ff8dde9dfaf4f3111 # v1.5.4
+      - uses: capralifecycle/actions-lib/check-runtime-dependencies@7887a32ad872a79a8e00817659a30876f0a8f1be # v1.5.5
 
-      - uses: capralifecycle/actions-lib/parse-config@f3dcdbe2cd85725311b4ff5ff8dde9dfaf4f3111 # v1.5.4
+      - uses: capralifecycle/actions-lib/parse-config@7887a32ad872a79a8e00817659a30876f0a8f1be # v1.5.5
         id: config
         with:
           config-file: ".ldp.json"
@@ -63,14 +63,14 @@ jobs:
       # - name: test - e2e
       #   run: npm run test:e2e:ci
 
-      - uses: capralifecycle/actions-lib/configure-aws-credentials@f3dcdbe2cd85725311b4ff5ff8dde9dfaf4f3111 # v1.5.4
+      - uses: capralifecycle/actions-lib/configure-aws-credentials@7887a32ad872a79a8e00817659a30876f0a8f1be # v1.5.5
         id: aws
         with:
           aws-account-id: ${{ steps.config.outputs.accountId }}
           # NOTE: We use different roles on default and non-default branches
           aws-iam-role-name: ${{ github.ref == format('refs/heads/{0}', github.event.repository.default_branch) && steps.config.outputs.roleName || steps.config.outputs.limitedRoleName }}
 
-      - uses: capralifecycle/actions-lib/upload-s3-artifact@f3dcdbe2cd85725311b4ff5ff8dde9dfaf4f3111 # v1.5.4
+      - uses: capralifecycle/actions-lib/upload-s3-artifact@7887a32ad872a79a8e00817659a30876f0a8f1be # v1.5.5
         if: ${{ github.ref == 'refs/heads/master' || inputs.deploy-to-dev }}
         id: upload-s3-artifact
         env:
@@ -82,7 +82,7 @@ jobs:
           target-path: "build"
 
       - name: trigger development deployment pipelines
-        uses: capralifecycle/actions-lib/trigger-deployment-pipeline@f3dcdbe2cd85725311b4ff5ff8dde9dfaf4f3111 # v1.5.4
+        uses: capralifecycle/actions-lib/trigger-deployment-pipeline@7887a32ad872a79a8e00817659a30876f0a8f1be # v1.5.5
         if: ${{ github.ref == format('refs/heads/{0}', github.event.repository.default_branch) || inputs.deploy-to-dev }}
         env:
           AWS_ACCESS_KEY_ID: ${{ steps.aws.outputs.aws-access-key-id }}
@@ -97,7 +97,7 @@ jobs:
           artifact-parameters: "devWebappArtifactS3Key=${{ steps.upload-s3-artifact.outputs.aws-s3-key }}"
 
       - name: trigger production deployment pipelines
-        uses: capralifecycle/actions-lib/trigger-deployment-pipeline@f3dcdbe2cd85725311b4ff5ff8dde9dfaf4f3111 # v1.5.4
+        uses: capralifecycle/actions-lib/trigger-deployment-pipeline@7887a32ad872a79a8e00817659a30876f0a8f1be # v1.5.5
         if: ${{ github.ref == format('refs/heads/{0}', github.event.repository.default_branch) }}
         env:
           AWS_ACCESS_KEY_ID: ${{ steps.aws.outputs.aws-access-key-id }}
