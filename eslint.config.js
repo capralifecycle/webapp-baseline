@@ -40,6 +40,7 @@ export default tseslint.config(
         },
       ],
       '@typescript-eslint/no-explicit-any': 'off',
+      '@typescript-eslint/consistent-type-imports': 'error',
 
       // React specific rules
       'react/prop-types': 'off',
