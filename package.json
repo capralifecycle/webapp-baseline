@@ -39,7 +39,7 @@
     "@playwright/test": "1.52.0",
     "@types/eslint__js": "8.42.3",
     "@types/node": "22.13.9",
-    "@types/react": "19.1.4",
+    "@types/react": "19.1.5",
     "@types/react-dom": "19.1.5",
     "@types/react-router-dom": "5.3.3",
     "@vitejs/plugin-react": "4.4.1",
