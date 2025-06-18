@@ -34,7 +34,7 @@
     "react-router-dom": "7.6.2"
   },
   "devDependencies": {
-    "@eslint/js": "9.28.0",
+    "@eslint/js": "9.29.0",
     "@playwright/experimental-ct-react": "1.53.0",
     "@playwright/test": "1.53.0",
     "@types/eslint__js": "8.42.3",
@@ -44,7 +44,7 @@
     "@types/react-router-dom": "5.3.3",
     "@vitejs/plugin-react": "4.5.2",
     "@vitest/coverage-istanbul": "3.2.3",
-    "eslint": "9.28.0",
+    "eslint": "9.29.0",
     "eslint-config-prettier": "10.1.5",
     "eslint-plugin-prettier": "5.4.1",
     "eslint-plugin-react": "7.37.5",
