@@ -42,7 +42,7 @@
     "@types/react": "19.1.11",
     "@types/react-dom": "19.1.7",
     "@types/react-router-dom": "5.3.3",
-    "@vitejs/plugin-react": "5.0.1",
+    "@vitejs/plugin-react": "5.0.2",
     "@vitest/coverage-istanbul": "3.2.4",
     "eslint": "9.34.0",
     "eslint-config-prettier": "10.1.8",
