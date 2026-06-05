@@ -43,7 +43,7 @@
     "@types/react-dom": "19.2.3",
     "@types/react-router-dom": "5.3.3",
     "@vitejs/plugin-react": "5.2.0",
-    "@vitest/coverage-istanbul": "4.1.7",
+    "@vitest/coverage-istanbul": "4.1.8",
     "eslint": "9.39.4",
     "eslint-config-prettier": "10.1.8",
     "eslint-plugin-prettier": "5.5.6",
@@ -54,7 +54,7 @@
     "typescript-eslint": "8.60.1",
     "vite": "7.3.5",
     "vite-plugin-checker": "0.14.1",
-    "vitest": "4.1.7"
+    "vitest": "4.1.8"
   },
   "browserslist": {
     "production": [
