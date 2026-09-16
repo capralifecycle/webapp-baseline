@@ -31,8 +31,6 @@ jobs:
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
 
-      - uses: capralifecycle/actions-lib/check-runtime-dependencies@1beb34c41b959412d4400179889454dc49b163af # v1.14.0
-
       - uses: capralifecycle/actions-lib/parse-config@1beb34c41b959412d4400179889454dc49b163af # v1.14.0
         id: config
         with:
